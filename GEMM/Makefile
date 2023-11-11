@@ -13,9 +13,9 @@ XILINX_VIVADO?=/opt/xilinx/Xilinx_Vivado_vitis_2019.2/Vivado/2019.2
 XIL_HLS=source $(XILINX_VIVADO)/settings64.sh; vivado_hls
 VHLS_INC=$(XILINX_VIVADO)/include
 # Specify compilation flags
-CFLAGS=-g -I${VHLS_INC}
+CFLAGS=-g -I${VHLS_INC} -DHLS_NO_XIL_FPO_LIB -std=c++11 
 
-SW_RESULTS=$(result/gemm_sw_result.txt)
+# SW_RESULTS=$(result/gemm_sw_result.txt)
 
 .PHONY: all clean gemm-sw gemm-hw
 
@@ -29,7 +29,17 @@ result/gemm_sw_result.txt: gemm_tb
 	mkdir -p result
 	./$< | tee $@
 
-gemm-sw: $(SW_RESULTS)
+# gemm-sw: $(SW_RESULTS)
+gemm-sw: csim
+
+
+result/gemm_csim.txt: gemm_tb
+	@echo "Running gemm sim..."
+	mkdir -p result
+	./$< | tee $@
+
+csim: result/gemm_csim.txt
+	@echo "Result recorded to $<"
 
 result/knn_result.csv: run.tcl gemm.cpp gemm_test.cpp
 	$(XIL_HLS) -f $<

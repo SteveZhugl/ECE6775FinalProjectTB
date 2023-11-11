@@ -1,14 +1,14 @@
 #include <iostream> 
+#include <hls_stream.h>
+#include "attention_layer.h"
 #include "gemm.h"
+
 
 // const int MATRIX_DIM_X = 10; 
 // const int MATRIX_DIM_Y = 10; 
 // const int MATRIX_DIM_Z = 10; 
 
-void dut
-(
-    hls::stream<float> &strm_in_a, 
-    hls::stream<float> &strm_in_b, 
+void dut(hls::stream<float> &strm_in_a, hls::stream<float> &strm_in_b, 
     hls::stream<float> &strm_out
 ) 
 {
@@ -22,7 +22,7 @@ void dut
     for (int i = 0; i < MATRIX_DIM_X; ++i) {
         for(int j = 0; j < MATRIX_DIM_Y; ++j) {
             stream_input1 = strm_in_a.read();
-            intput1[i][j] = stream_input1
+            input1[i][j] = stream_input1;
         }
     }
 
@@ -30,12 +30,12 @@ void dut
     for (int j = 0; j < MATRIX_DIM_Y; ++j) {
         for(int k = 0; k < MATRIX_DIM_Z; ++k) {
             stream_input2 = strm_in_b.read();
-            intput2[j][k] = stream_input2
+            input2[j][k] = stream_input2;
         }
     }
 
     // call GEMM
-    output = matrix_multiply(input1, input2);
+    matrix_multiply<MATRIX_DIM_X, MATRIX_DIM_Y, MATRIX_DIM_Z>(input1, input2, output);
 
     // write out the result
     for (int i = 0; i < MATRIX_DIM_X; ++i) {
