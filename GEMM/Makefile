@@ -1,11 +1,11 @@
 #==========================================================================
 # Makefile
 #==========================================================================
-# @brief: A makefile the compiles and runs the digitrec program
+# @brief: A makefile the compiles and runs the gemm program
 #
-# @desc: 1. Enter "make all" to make digitrec-sw and digitrec-hw
-#        2. Enter "make digitrec-sw" to compile & execute the digitrec program
-#        3. Enter "make digitrec-hw" to synthesize digitrec using run.tcl
+# @desc: 1. Enter "make all" to make gemm-sw and gemm-hw
+#        2. Enter "make gemm-sw" to compile & execute the gemm program
+#        3. Enter "make gemm-hw" to synthesize gemm using run.tcl
 #        4. Enter "make clean" to clean up the directory (before submission)
 
 # Extract Vivado HLS include path
@@ -19,28 +19,28 @@ K_VALUES=3
 # TIP: You can add multiple values of K: just add a space between values like so:
 # K_VALUES=1 2 3 4 5
 
-SW_RESULTS=$(patsubst %,result/digitrec_%-nn_sw_result.txt,$(K_VALUES))
+SW_RESULTS=$(patsubst %,result/gemm_%-nn_sw_result.txt,$(K_VALUES))
 
-.PHONY: all clean digitrec-sw digitrec-hw
+.PHONY: all clean gemm-sw gemm-hw
 
-# Compile & run digitrec implementation
-all: digitrec-sw digitrec-hw
+# Compile & run gemm implementation
+all: gemm-sw gemm-hw
 
-digitrec_%-nn_tb: digitrec.cpp digitrec_test.cpp
+gemm_%-nn_tb: gemm.cpp gemm_test.cpp
 	g++ ${CFLAGS} -DK_CONST=$* $^ -o $@
 
-result/digitrec_%-nn_sw_result.txt: digitrec_%-nn_tb
+result/gemm_%-nn_sw_result.txt: gemm_%-nn_tb
 	mkdir -p result
 	./$< | tee $@
 
-digitrec-sw: $(SW_RESULTS)
+gemm-sw: $(SW_RESULTS)
 
-result/knn_result.csv: run.tcl digitrec.cpp digitrec_test.cpp
+result/knn_result.csv: run.tcl gemm.cpp gemm_test.cpp
 	$(XIL_HLS) -f $<
 
-digitrec-hw: result/knn_result.csv
+gemm-hw: result/knn_result.csv
 
 # Clean up the directory before submission
 clean:
 	@echo "Clean up output files"
-	rm -rf digitrec_*-nn_tb vivado_hls.log *nn.prj result out.dat *~
+	rm -rf gemm_*-nn_tb vivado_hls.log *nn.prj result out.dat *~

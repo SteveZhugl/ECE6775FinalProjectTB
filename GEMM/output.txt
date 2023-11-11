@@ -1,0 +1,32 @@
+Python Output: -2358.75 Calculated Output: -2358.75
+Difference: 0
+Python Output: 861.583 Calculated Output: 861.583
+Difference: 0
+Python Output: 2915.65 Calculated Output: 2915.65
+Difference: 0
+Python Output: 6042.55 Calculated Output: 6042.55
+Difference: 0
+Python Output: 6089.19 Calculated Output: 6089.19
+Difference: 0
+Python Output: 3893.36 Calculated Output: 3893.36
+Difference: 0
+Python Output: 3422.51 Calculated Output: 3422.52
+Difference: 0
+Python Output: 9804.42 Calculated Output: 9804.42
+Difference: 0
+Python Output: 8635.31 Calculated Output: 8635.31
+Difference: 0
+Python Output: 7262.79 Calculated Output: 7262.79
+Difference: 0
+Python Output: 2004.4 Calculated Output: 2004.4
+Difference: 0
+Python Output: 11810.8 Calculated Output: 11810.8
+Difference: 0
+Python Output: 5246.86 Calculated Output: 5246.86
+Difference: 0
+Python Output: 4501.47 Calculated Output: 4501.47
+Difference: 0
+Python Output: 2523.78 Calculated Output: 2523.78
+Difference: 0
+Python Output: 8848.98 Calculated Output: 8848.98
+Difference: 0

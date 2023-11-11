@@ -15,15 +15,6 @@
 set filename "knn_result.csv"
 file delete -force "./result/${filename}"
 
-#------------------------------------------------------
-# You can specify a set of parameter K to explore.
-#------------------------------------------------------
-set value_k { 3 }
-#------------------------------------------------------
-# run batch experiments
-#------------------------------------------------------
-foreach { K } $value_k {
-
 # Define the bitwidth macros from CFLAGs
 set CFLAGS "-DK_CONST=${K}"
 
