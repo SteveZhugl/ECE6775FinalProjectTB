@@ -15,21 +15,17 @@ VHLS_INC=$(XILINX_VIVADO)/include
 # Specify compilation flags
 CFLAGS=-g -I${VHLS_INC}
 
-K_VALUES=3
-# TIP: You can add multiple values of K: just add a space between values like so:
-# K_VALUES=1 2 3 4 5
-
-SW_RESULTS=$(patsubst %,result/gemm_%-nn_sw_result.txt,$(K_VALUES))
+SW_RESULTS=$(result/gemm_sw_result.txt)
 
 .PHONY: all clean gemm-sw gemm-hw
 
 # Compile & run gemm implementation
 all: gemm-sw gemm-hw
 
-gemm_%-nn_tb: gemm.cpp gemm_test.cpp
+gemm_tb: gemm.cpp gemm_test.cpp
 	g++ ${CFLAGS} -DK_CONST=$* $^ -o $@
 
-result/gemm_%-nn_sw_result.txt: gemm_%-nn_tb
+result/gemm_sw_result.txt: gemm_tb
 	mkdir -p result
 	./$< | tee $@
 
@@ -43,4 +39,4 @@ gemm-hw: result/knn_result.csv
 # Clean up the directory before submission
 clean:
 	@echo "Clean up output files"
-	rm -rf gemm_*-nn_tb vivado_hls.log *nn.prj result out.dat *~
+	rm -rf gemm_*_tb vivado_hls.log *nn.prj result out.dat *~
