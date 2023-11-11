@@ -2,12 +2,12 @@ import random
 import numpy as np
 
 def generate_data():
-    # i = 128
-    # j = 256
-    # k = 64 
-    i = 4
-    j = 4
-    k = 4
+    i = 128
+    j = 256
+    k = 64 
+    # i = 4
+    # j = 4
+    # k = 4
     f1 = open("data/matrix_a_dat.dat", "w")
     f2 = open("data/matrix_b_dat.dat", "w")
     f3 = open("data/matrix_c_dat.dat", "w")
