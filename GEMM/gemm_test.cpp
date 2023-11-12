@@ -56,9 +56,9 @@ void verify_output(float output[MATRIX_DIM_X][MATRIX_DIM_Z])
             {
                 float i;
                 infile_c >> i;
-                std::cout << "Python Output: " << i << " Calculated Output: " << output[a][b] << std::endl;
+                // std::cout << "Python Output: " << i << " Calculated Output: " << output[a][b] << std::endl;
                 difference = abs(output[a][b] - i);
-                std::cout << "Difference: " << difference << std::endl;
+                // std::cout << "Difference: " << difference << std::endl;
             }
         }
         infile_c.close();
@@ -74,5 +74,6 @@ int main()
 
     read_matrices(input_1, input_2);
     matrix_multiply<MATRIX_DIM_X, MATRIX_DIM_Y, MATRIX_DIM_Z>(input_1, input_2, output);
+    // dut(input_1, input_2, output);
     verify_output(output);
 }

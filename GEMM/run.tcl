@@ -12,23 +12,23 @@
 #------------------------------------------------------
 # Remove old result file
 #------------------------------------------------------
-set filename "knn_result.csv"
+set filename "gemm_result.csv"
 file delete -force "./result/${filename}"
 
 # Define the bitwidth macros from CFLAGs
-set CFLAGS "-DK_CONST=${K}"
+# set CFLAGS "-DK_CONST=${K}"
 
 # Project name
-set hls_prj ${K}-nn.prj
+set hls_prj gemm_proj.prj
 
 # Open/reset the project
 open_project ${hls_prj} -reset
 # Top function of the design is "digitrec"
-set_top digitrec
+set_top dut
 
 # Add design and testbench files
-add_files digitrec.cpp -cflags $CFLAGS
-add_files -tb digitrec_test.cpp -cflags $CFLAGS
+add_files gemm.cpp 
+add_files -tb gemm_test.cpp 
 add_files -tb data
 
 open_solution "solution1"
@@ -39,25 +39,25 @@ set_part {xc7z020clg484-1}
 create_clock -period 10
 
 # Do not inline update_knn and knn_vote functions 
-set_directive_inline -off update_knn
-set_directive_inline -off knn_vote
+# set_directive_inline -off update_knn
+# set_directive_inline -off knn_vote
 ### You can add your own directives here ###
 
 # # Loop Unrolling optimizations
-set_directive_unroll digitrec/KNN_INIT_LOOP
-set_directive_unroll digitrec/TRAIN_LOOP_INNER
-set_directive_unroll knn_vote/MIN_DIST_LOOP
-set_directive_unroll knn_vote/NEAR_NEIGHBOR_INIT_LOOP
-set_directive_unroll knn_vote/KNN_VOTE_VAL_LOOP
+# set_directive_unroll digitrec/KNN_INIT_LOOP
+# set_directive_unroll digitrec/TRAIN_LOOP_INNER
+# set_directive_unroll knn_vote/MIN_DIST_LOOP
+# set_directive_unroll knn_vote/NEAR_NEIGHBOR_INIT_LOOP
+# set_directive_unroll knn_vote/KNN_VOTE_VAL_LOOP
 # set_directive_unroll knn_vote/KNN_VOTE_ROW_LOOP
 # set_directive_unroll knn_vote/KNN_VOTE_NEAR_NEIGHBOR_LOOP
 # set_directive_unroll knn_vote/OUT_COUNTER_LOOP
 # set_directive_unroll knn_vote/IN_COUNTER_LOOP
 
 # Array Partitioning Optimizations
-set_directive_array_partition -type complete digitrec knn_set
+# set_directive_array_partition -type complete digitrec knn_set
 # set_directive_array_partition -type complete update_knn min_distances
-set_directive_array_partition -type complete knn_vote nearest_neighbors
+# set_directive_array_partition -type complete knn_vote nearest_neighbors
 
 # Simulate the C++ design
 csim_design
@@ -71,6 +71,5 @@ csynth_design
 #---------------------------------------------
 set argv [list $filename $hls_prj]
 set argc 2
-source "./script/collect_result.tcl"
-}
+# source "./script/collect_result.tcl"
 exit
