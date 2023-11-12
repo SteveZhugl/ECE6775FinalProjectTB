@@ -41,10 +41,10 @@ result/gemm_csim.txt: gemm_tb
 csim: result/gemm_csim.txt
 	@echo "Result recorded to $<"
 
-result/knn_result.csv: run.tcl gemm.cpp gemm_test.cpp
+result/gemm_result.csv: run.tcl gemm.cpp gemm_test.cpp
 	$(XIL_HLS) -f $<
 
-gemm-hw: result/knn_result.csv
+gemm-hw: result/gemm_result.csv
 
 # Clean up the directory before submission
 clean:
