@@ -7,73 +7,51 @@
 #include "softmax.h"
 #include "vector.h"
 
-void read_matrices
+void read_vector
 (
-    float input_matrix1[MATRIX_DIM_X][MATRIX_DIM_Y], 
-    float input_matrix2[MATRIX_DIM_Y][MATRIX_DIM_Z]
+    float input_vector[layer_size]
 ) 
 {
-    std::ifstream infile_a("data/matrix_a_dat.dat");
+    std::ifstream infile_a("data/vector_dat.dat");
     if (infile_a.is_open()) 
     {
-        for (int a = 0; a < MATRIX_DIM_X; a++) 
+        for (int a = 0; a < layer_size; a++) 
         {
-            for (int b = 0; b < MATRIX_DIM_Y; b++) 
-            {
-                float i;
-                infile_a >> i;
-                input_matrix1[a][b] = i;
-            }
+
+            float i;
+            infile_a >> i;
+            input_vector[a] = i;
         }
         infile_a.close();
     }
-
-    std::ifstream infile_b("data/matrix_b_dat.dat");
-    if (infile_b.is_open()) 
-    {
-        for (int a = 0; a < MATRIX_DIM_Y; a++) 
-        {
-            for (int b = 0; b < MATRIX_DIM_Z; b++) 
-            {
-                float i;
-                infile_b >> i;
-                input_matrix2[a][b] = i;
-            }
-        }
-        infile_b.close();
-    }
 }
 
-void verify_output(float output[MATRIX_DIM_X][MATRIX_DIM_Z])
+void verify_output(float output[layer_size])
 {
     float difference = 0;
-    std::ifstream infile_c("data/matrix_c_dat.dat");
-    if (infile_c.is_open()) 
+    std::ifstream infile_b("data/output_dat.dat");
+    if (infile_b.is_open()) 
     {
-        for (int a = 0; a < MATRIX_DIM_X; a++) 
+        for (int a = 0; a < layer_size; a++) 
         {
-            for (int b = 0; b < MATRIX_DIM_Z; b++) 
-            {
-                float i;
-                infile_c >> i;
-                // std::cout << "Python Output: " << i << " Calculated Output: " << output[a][b] << std::endl;
-                difference = abs(output[a][b] - i);
-                // std::cout << "Difference: " << difference << std::endl;
-            }
+            float i;
+            infile_b >> i;
+            std::cout << "Python Output: " << i << " Calculated Output: " << output[a] << std::endl;
+            difference = abs(output[a] - i);
+            std::cout << "Difference: " << difference << std::endl;
         }
-        infile_c.close();
+        infile_b.close();
     }
 }
 
 
 int main() 
 {
-    float input_1[MATRIX_DIM_X][MATRIX_DIM_Y];
-    float input_2[MATRIX_DIM_Y][MATRIX_DIM_Z];
-    float output[MATRIX_DIM_X][MATRIX_DIM_Z];
+    float input_vector[layer_size];
+    float output[layer_size];
 
-    read_matrices(input_1, input_2);
-    matrix_multiply<MATRIX_DIM_X, MATRIX_DIM_Y, MATRIX_DIM_Z>(input_1, input_2, output);
+    read_vector(input_vector);
+    softmax<layer_size>(input_vector, output);
     // dut(input_1, input_2, output);
     verify_output(output);
 }

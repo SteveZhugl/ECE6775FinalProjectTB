@@ -2,11 +2,12 @@
 // gemm.h
 //===========================================================================
 // @brief: This header defines the shorthand of several ap_uint data types.
+#include <cmath>  // Include the header for pow function
 
 #ifndef SOFTMAX
 #define SOFTMAX
 
-const float euler_number = 2.71828182845904523536028747135266249775724709369995 
+const float euler_number = 2.71828182845904523536028747135266249775724709369995;
 
 template <int layer_size>
 void softmax
@@ -19,13 +20,13 @@ void softmax
     float euler_sums[layer_size];
     for(int i = 0; i < layer_size; ++i) 
     {
-        euler_sums[i] = euler_number ^ output_layer[i]
+        euler_sums[i] = std::pow(euler_number, output_layer[i]);
         euler_layer_sum += euler_sums[i];
     }
 
     for(int j = 0; j < layer_size; ++j) 
     {
-        probability_distrubtion[j] = euler_sums[i] / euler_layer_sum;
+        probability_distrubtion[j] = euler_sums[j] / euler_layer_sum;
     }
 }
 
