@@ -2,12 +2,13 @@
 // gemm.h
 //===========================================================================
 // @brief: This header defines the shorthand of several ap_uint data types.
-#include <cmath>  // Include the header for pow function
 
 #ifndef SOFTMAX
 #define SOFTMAX
 
-const float euler_number = 2.71828182845904523536028747135266249775724709369995;
+#include <cmath>  
+
+const float euler_number = 2.7182818284590;
 
 template <int layer_size>
 void softmax
