@@ -19,8 +19,13 @@ void softmax
     float euler_sums[layer_size];
     for(int i = 0; i < layer_size; ++i) 
     {
-        euler_sums[i] = euler_number * 
-        euler_layer_sum += 
+        euler_sums[i] = euler_number ^ output_layer[i]
+        euler_layer_sum += euler_sums[i];
+    }
+
+    for(int j = 0; j < layer_size; ++j) 
+    {
+        probability_distrubtion[j] = euler_sums[i] / euler_layer_sum;
     }
 }
 
