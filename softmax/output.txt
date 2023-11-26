@@ -1,0 +1,256 @@
+Python Output: 3.46232e-07 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 9.44513e-29 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 1.92636e-32 Calculated Output: 0
+Difference: 0
+Python Output: 6.03179e-21 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 1.60713e-21 Calculated Output: 0
+Difference: 0
+Python Output: 4.44212e-42 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 3.40302e-24 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 5.94402e-37 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 6.58267e-09 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 2.28733e-15 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 3.53955e-11 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 2.82296e-34 Calculated Output: 0
+Difference: 0
+Python Output: 1.11683e-42 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 8.40779e-45 Calculated Output: 0
+Difference: 0
+Python Output: 1.18582e-39 Calculated Output: 0
+Difference: 0
+Python Output: 0.46348 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 7.00649e-45 Calculated Output: 0
+Difference: 0
+Python Output: 1.43524e-05 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 1.33824e-42 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 4.83724e-09 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 1.96182e-44 Calculated Output: 0
+Difference: 0
+Python Output: 4.2144e-05 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 3.97506e-10 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 6.64195e-10 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 6.08989e-15 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0.00138984 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 5.29768e-14 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0.00109399 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 1.93311e-25 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 4.25233e-09 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0.00301453 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 5.40383e-41 Calculated Output: 0
+Difference: 0
+Python Output: 5.60055e-07 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 1.12549e-16 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 1.90403e-20 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 3.15292e-43 Calculated Output: 0
+Difference: 0
+Python Output: 8.64531e-31 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 5.38003e-27 Calculated Output: 0
+Difference: 0
+Python Output: 1.34272e-40 Calculated Output: 0
+Difference: 0
+Python Output: 1.54561e-13 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 9.30954e-39 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 1.08318e-32 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 3.67521e-17 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0.530472 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 6.81536e-41 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 1.65908e-27 Calculated Output: 0
+Difference: 0
+Python Output: 5.39632e-24 Calculated Output: 0
+Difference: 0
+Python Output: 0.000489686 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 5.46792e-11 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 1.76511e-37 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 1.1135e-17 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 4.90283e-34 Calculated Output: 0
+Difference: 0
+Python Output: 5.76826e-27 Calculated Output: 0
+Difference: 0
+Python Output: 1.90276e-24 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 2.0228e-36 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 3.93204e-25 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 8.72053e-32 Calculated Output: 0
+Difference: 0
+Python Output: 1.50697e-36 Calculated Output: 0
+Difference: 0
+Python Output: 1.5272e-34 Calculated Output: 0
+Difference: 0
+Python Output: 2.32332e-13 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 2.90554e-06 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 0 Calculated Output: 0
+Difference: 0
+Python Output: 1.7876e-17 Calculated Output: -nan
+Difference: -2.14748e+09
+Python Output: 4.41045e-17 Calculated Output: -nan
+Difference: -2.14748e+09
