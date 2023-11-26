@@ -1,3 +1,4 @@
 result
 gemm_test
 gemm_tb
+softmax_test
