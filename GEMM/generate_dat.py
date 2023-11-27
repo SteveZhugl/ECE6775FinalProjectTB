@@ -17,7 +17,7 @@ def generate_data():
     output_matrix = np.zeros((i, k))
 
     mean = 0
-    std_dev = 2
+    std_dev = 4
 
     ij_points = i * j
     jk_points = j * k
