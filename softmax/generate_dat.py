@@ -9,7 +9,7 @@ def generate_data():
     vector_values = []
 
     for i in range(0, vector_size):
-        vector_value = random.uniform(-128, 128)
+        vector_value = random.uniform(-8, 7)
         input_file.write(str(vector_value) + "\n")
         vector_values.append(vector_value)
 
