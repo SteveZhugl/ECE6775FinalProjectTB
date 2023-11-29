@@ -28,7 +28,7 @@ def generate_data():
     #! REMOVE LATER Plot a histogram to visualize the distribution
     plt.hist(random_data_ij, bins=30, density=True, alpha=0.6, color='g')
 
-    # Plot the probability density function (PDF)
+    # Plot the probability density function (PDF)   
     xmin, xmax = plt.xlim()
     x = np.linspace(xmin, xmax, 100)
     p = np.exp(-0.5 * ((x - mean) / std_dev) ** 2) / (std_dev * np.sqrt(2 * np.pi))
