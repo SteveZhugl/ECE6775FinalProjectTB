@@ -9,7 +9,7 @@
 const float euler_number = 2.7182818284590;
 
 // Function to calculate power using Taylor series expansion
-double powerWithoutLibrary(double base, double exponent) {
+double custom_exponential(double base, double exponent) {
     double result = 1.0;
 
     // Calculate power using Taylor series expansion
@@ -27,14 +27,13 @@ double powerWithoutLibrary(double base, double exponent) {
     return result;
 }
 
-
 template <int layer_size>
 void softmax(float output_layer[layer_size], float probability_distribution[layer_size]) {
     float euler_layer_sum = 0;
     float euler_sums[layer_size];
 
     for (int i = 0; i < layer_size; ++i) {
-        euler_sums[i] = powerWithoutLibrary(euler_number, output_layer[i]);
+        euler_sums[i] = custom_exponential(euler_number, output_layer[i]);
         euler_layer_sum += euler_sums[i];
     }
 
