@@ -73,24 +73,17 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
             outfile_c << std::endl;
         }
         infile_c.close();
+        outfile_c.close();
     }
     accerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
     avgerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
     outfile_c << accerr << std::endl;
     outfile_c << avgerr;
-
 }
 
 
 int main() 
 {
-    // int MSIZE = MATRIX_DIM_X * MATRIX_DIM_Z;
-    // int OFFSET = 0;
-    // while(MSIZE != 0){
-    //     MSIZE >>= 1;
-    //     OFFSET++;
-    // }
-
     dtype_in input_1[MATRIX_DIM_X][MATRIX_DIM_Y];
     dtype_in input_2[MATRIX_DIM_Y][MATRIX_DIM_Z];
     dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z];
