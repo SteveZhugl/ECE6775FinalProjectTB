@@ -12,11 +12,11 @@ void dut(hls::stream<float> &strm_in_a, hls::stream<float> &strm_in_b,
     hls::stream<float> &strm_out
 ) 
 {
-    float input1[MATRIX_DIM_X][MATRIX_DIM_Y];
-    float input2[MATRIX_DIM_Y][MATRIX_DIM_Z];
+    dtype_in input1[MATRIX_DIM_X][MATRIX_DIM_Y];
+    dtype_in input2[MATRIX_DIM_Y][MATRIX_DIM_Z];
     float stream_input1;
     float stream_input2;
-    float output[MATRIX_DIM_X][MATRIX_DIM_Z];
+    dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z];
 
     // read stream 1
     for (int i = 0; i < MATRIX_DIM_X; ++i) {

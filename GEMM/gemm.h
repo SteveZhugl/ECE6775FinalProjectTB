@@ -3,15 +3,18 @@
 //===========================================================================
 // @brief: This header defines the shorthand of several ap_uint data types.
 
+#include "typedefs.h"
+
 #ifndef GEMM
 #define GEMM
+
 
 template <int MATRIX_DIM_X, int MATRIX_DIM_Y, int MATRIX_DIM_Z>
 void matrix_multiply
 (
-    float matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y], 
-    float matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z],
-    float matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]
+    dtype_in matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y], 
+    dtype_in matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z],
+    dtype_out matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]
 )
 {
     for(int i = 0; i < MATRIX_DIM_X; ++i)

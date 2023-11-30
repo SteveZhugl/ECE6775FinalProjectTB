@@ -22,7 +22,8 @@ CFLAGS=-g -I${VHLS_INC} -DHLS_NO_XIL_FPO_LIB -std=c++11
 # Compile & run gemm implementation
 all: gemm-sw gemm-hw
 
-gemm_tb: gemm.cpp gemm_test.cpp
+#gemm_tb: gemm.cpp gemm_test.cpp
+gemm_tb: gemm_test.cpp
 	g++ ${CFLAGS} -DK_CONST=$* $^ -o $@
 
 result/gemm_sw_result.txt: gemm_tb
