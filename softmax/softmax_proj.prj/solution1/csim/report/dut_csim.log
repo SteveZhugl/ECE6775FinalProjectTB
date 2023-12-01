@@ -1,3 +1,10 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+make[1]: Entering directory `/home/mts247/ece6775/FinalProject/ECE6775FinalProjectTB/softmax/softmax_proj.prj/solution1/csim/build'
+   Compiling ../../../../softmax_test.cpp in debug mode
+   Compiling ../../../../softmax.cpp in debug mode
+   Generating csim.exe
+make[1]: Leaving directory `/home/mts247/ece6775/FinalProject/ECE6775FinalProjectTB/softmax/softmax_proj.prj/solution1/csim/build'
 Python Output: 0.00730529 Calculated Output: 0.00730529
 Difference: 0
 Python Output: 1.94132e-06 Calculated Output: 1.94136e-06
@@ -254,3 +261,5 @@ Python Output: 0.0041708 Calculated Output: 0.0041708
 Difference: 0
 Python Output: 5.86528e-05 Calculated Output: 5.86528e-05
 Difference: 0
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

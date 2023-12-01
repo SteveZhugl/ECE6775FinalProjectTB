@@ -1,0 +1,11 @@
+dut_fadd_32ns_32ncud
+dut_fmul_32ns_32ndEe
+dut_fdiv_32ns_32neOg
+dut_sitofp_32ns_3fYi
+dut_fptrunc_64ns_g8j
+dut_fpext_32ns_64hbi
+dut_dadd_64ns_64nibs
+dut_dmul_64ns_64njbC
+softmax_128_s_eulbkb
+softmax_128_s
+dut
