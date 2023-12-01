@@ -52,7 +52,7 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
 {
     float difference = 0;
     std::ifstream infile_c("data/matrix_c_dat.dat");
-    std::ofstream outfile_c("data/draft_c.txt", std::ios::out);
+    std::ofstream outfile_c("data/draft_c.txt");
     float accerr = 0;
     float avgerr = 0;
     if (infile_c.is_open()) 
@@ -79,6 +79,14 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
         outfile_c.close();
         infile_c.close();
     }
+<<<<<<< Updated upstream
+=======
+    accerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
+    avgerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
+    outfile_c << accerr << std::endl;
+    outfile_c << avgerr;
+    outfile_c.close();
+>>>>>>> Stashed changes
 }
 
 
