@@ -3,7 +3,7 @@
 file="typedefs.h"
 data_file="data/draft_c.txt"
 output_file="apint_analysis_output.txt"
-csynth_report="gemm_proj.prj/solution1/syn/report/dut_csynth.rpt"
+csynth_report="softmax_proj.prj/solution1/syn/report/dut_csynth.rpt"
 
 # Define arrays of new values for dtype_in and dtype_out
 new_dtype_in_values=(4 6 8 10)

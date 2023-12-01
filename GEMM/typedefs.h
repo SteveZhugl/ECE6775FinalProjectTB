@@ -9,8 +9,8 @@
 #include "ap_int.h"
 #include "ap_fixed.h"
 
-typedef ap_int<6> dtype_in;
-typedef ap_int<8> dtype_out; 
+typedef ap_int<10> dtype_in;
+typedef ap_int<4> dtype_out; 
 typedef ap_uint<4> bit4;
 typedef ap_uint<6> bit6;
 typedef ap_uint<32> bit32;
