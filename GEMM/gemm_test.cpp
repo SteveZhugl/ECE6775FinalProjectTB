@@ -72,13 +72,13 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
             }
             outfile_c << std::endl;
         }
-        infile_c.close();
+        accerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
+        avgerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
+        outfile_c << accerr << std::endl;
+        outfile_c << avgerr;
         outfile_c.close();
+        infile_c.close();
     }
-    accerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
-    avgerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
-    outfile_c << accerr << std::endl;
-    outfile_c << avgerr;
 }
 
 

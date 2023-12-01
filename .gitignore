@@ -2,3 +2,5 @@ result
 gemm_test
 gemm_tb
 softmax_test
+vivado_hls.log
+gemm_proj.prj
