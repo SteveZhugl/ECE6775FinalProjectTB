@@ -4,3 +4,5 @@ gemm_tb
 softmax_test
 vivado_hls.log
 gemm_proj.prj
+softmax_proj.prj
+softmax_tb
