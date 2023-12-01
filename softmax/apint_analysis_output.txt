@@ -1,0 +1,45 @@
+Input Data Size: 16 Output Data Size: 32
+Accuracy Difference: 1.95444e+06
+|FIFO             |        -|      -|       -|      -|    -|
+    * Instance: 
+
+Input Data Size: 16 Output Data Size: 24
+Accuracy Difference: 1.95444e+06
+|FIFO             |        -|      -|       -|      -|    -|
+    * Instance: 
+
+Input Data Size: 16 Output Data Size: 16
+Accuracy Difference: 1.95444e+06
+|FIFO             |        -|      -|       -|      -|    -|
+    * Instance: 
+
+Input Data Size: 24 Output Data Size: 32
+Accuracy Difference: 1.95444e+06
+|FIFO             |        -|      -|       -|      -|    -|
+    * Instance: 
+
+Input Data Size: 24 Output Data Size: 24
+Accuracy Difference: 1.95444e+06
+|FIFO             |        -|      -|       -|      -|    -|
+    * Instance: 
+
+Input Data Size: 24 Output Data Size: 16
+Accuracy Difference: 1.95444e+06
+|FIFO             |        -|      -|       -|      -|    -|
+    * Instance: 
+
+Input Data Size: 32 Output Data Size: 32
+Accuracy Difference: 1.95444e+06
+|FIFO             |        -|      -|       -|      -|    -|
+    * Instance: 
+
+Input Data Size: 32 Output Data Size: 24
+Accuracy Difference: 1.95444e+06
+|FIFO             |        -|      -|       -|      -|    -|
+    * Instance: 
+
+Input Data Size: 32 Output Data Size: 16
+Accuracy Difference: 1.95444e+06
+|FIFO             |        -|      -|       -|      -|    -|
+    * Instance: 
+

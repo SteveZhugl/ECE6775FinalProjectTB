@@ -6,8 +6,8 @@ output_file="apint_analysis_output.txt"
 csynth_report="softmax_proj.prj/solution1/syn/report/dut_csynth.rpt"
 
 # Define arrays of new values for dtype_in and dtype_out
-new_dtype_in_values=(4 6 8 10)
-new_dtype_out_values=(20 16 12 8 4)
+new_dtype_in_values=(16 24 32)
+new_dtype_out_values=(32 24 16)
 
 # Check if the file exists
 if [ -e "$file" ]; then
