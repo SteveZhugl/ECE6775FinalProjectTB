@@ -3,15 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def generate_data():
+    # i = 128
+    # j = 256
+    # k = 64 
     i = 4
     j = 4
-    k = 4 
-    # i = 4
-    # j = 4
-    # k = 4
-    f1 = open("data/matrix_a_dat.dat", "w")
-    f2 = open("data/matrix_b_dat.dat", "w")
-    f3 = open("data/matrix_c_dat.dat", "w")
+    k = 4
+    f1 = open("data/input_matrix1.dat", "w")
+    f2 = open("data/input_matrix2.dat", "w")
+    f3 = open("data/output_matrix.dat", "w")
     matrix_1 = np.zeros((i, j))
     matrix_2 = np.zeros((j, k))
     output_matrix = np.zeros((i, k))
@@ -51,6 +51,10 @@ def generate_data():
         exponential_logits = np.exp(vector_values)
         probabilities = exponential_logits / np.sum(exponential_logits)
         output_matrix[i, :] = probabilities
+        for j in range(0, k):
+            f3.write(str(probabilities[j]) + "\n")
+
+
 
     print("Input matrix 1: " + str(matrix_1))
     print("Input matrix 2: " + str(matrix_2))
