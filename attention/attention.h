@@ -14,7 +14,7 @@ double custom_exponential(double base, double exponent) {
     double result = 1.0;
 
     // Calculate power using Taylor series expansion
-    for (int i = 1; i <= 100; ++i) {
+    for (int i = 1; i <= 1000; ++i) {
         double term = 1.0;
         for (int j = 1; j <= i; ++j) {
             term *= exponent / j;
