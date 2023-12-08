@@ -6,3 +6,5 @@ vivado_hls.log
 gemm_proj.prj
 softmax_proj.prj
 softmax_tb
+xillydemo.bit
+zedboard_project
