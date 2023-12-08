@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2.1 (64-bit)
+# SW Build 2729669 on Thu Dec  5 04:48:12 MST 2019
+# IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
+# Start of session at: Thu Dec  7 18:58:49 2023
+# Process ID: 22264
+# Current directory: /home/xl834/transformer/ECE6775FinalProjectTB/GEMM/zedboard_project/xillybus/vivado/xillydemo.runs/impl_1
+# Command line: vivado -log xillydemo.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source xillydemo.tcl -notrace
+# Log file: /home/xl834/transformer/ECE6775FinalProjectTB/GEMM/zedboard_project/xillybus/vivado/xillydemo.runs/impl_1/xillydemo.vdi
+# Journal file: /home/xl834/transformer/ECE6775FinalProjectTB/GEMM/zedboard_project/xillybus/vivado/xillydemo.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source xillydemo.tcl -notrace

@@ -63,12 +63,12 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
             {
                 float i;
                 infile_c >> i;
-                // std::cout << "Python Output: " << i << " Calculated Output: " << output[a][b] << std::endl;
+                std::cout << "Python Output: " << i << " Calculated Output: " << output[a][b] << std::endl;
                 difference = abs((float)output[a][b] - i);
                 accerr += abs(difference);
                 avgerr += abs(difference / i);
                 outfile_c << i << " " << output[a][b] << " " << difference << std::endl;
-                // std::cout << "Difference: " << difference << std::endl;
+                std::cout << "Difference: " << difference << std::endl;
             }
             outfile_c << std::endl;
         }
@@ -79,14 +79,6 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
         outfile_c.close();
         infile_c.close();
     }
-<<<<<<< Updated upstream
-=======
-    accerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
-    avgerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
-    outfile_c << accerr << std::endl;
-    outfile_c << avgerr;
-    outfile_c.close();
->>>>>>> Stashed changes
 }
 
 
@@ -97,7 +89,29 @@ int main()
     dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z];
 
     read_matrices(input_1, input_2);
-    matrix_multiply<MATRIX_DIM_X, MATRIX_DIM_Y, MATRIX_DIM_Z>(input_1, input_2, output);
-    //dut(input_1, input_2, output);
+
+    hls::stream<dtype_in> strm_in;
+    hls::stream<dtype_out> strm_out;
+    for(int i=0; i<MATRIX_DIM_X; i++){
+        for(int j=0; j<MATRIX_DIM_Y; j++){
+            strm_in.write(input_1[i][j]);
+        }
+    }
+
+    for(int i=0; i<MATRIX_DIM_Y; i++){
+        for(int j=0; j<MATRIX_DIM_Z; j++){
+            strm_in.write(input_2[i][j]);
+        }
+    }
+
+    dut(strm_in, strm_out);
+
+    for(int i=0; i<MATRIX_DIM_X; i++){
+        for(int j=0; j<MATRIX_DIM_Z; j++){
+            output[i][j] = strm_out.read();
+        }
+    }
+
+    //matrix_multiply<MATRIX_DIM_X, MATRIX_DIM_Y, MATRIX_DIM_Z>(input_1, input_2, output);
     verify_output(output);
 }

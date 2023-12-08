@@ -4,10 +4,12 @@
 // @brief: This header defines the shorthand of several ap_uint data types.
 
 #include "typedefs.h"
+#include <hls_stream.h>
 
 #ifndef GEMM
 #define GEMM
 
+void dut(hls::stream<dtype_in> &strm_in, hls::stream<dtype_out> &strm_out);
 
 template <int MATRIX_DIM_X, int MATRIX_DIM_Y, int MATRIX_DIM_Z>
 void matrix_multiply

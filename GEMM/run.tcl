@@ -1,13 +1,10 @@
 #=============================================================================
 # run.tcl 
 #=============================================================================
-# @brief: A Tcl script for synthesizing the digit recongnition design.
+# @brief: A Tcl script for synthesizing the GEMM design.
 #
-# @desc: This script launches a batch of simulation & synthesis runs
-# to quickly explore different K parameters.
 #
-# 1. The user specifies the list of K values.
-# 2. Useful simulation & synthesis stats are consolidated into ./result/result.csv
+# Useful simulation & synthesis stats are consolidated into ./result/result.csv
 
 #------------------------------------------------------
 # Remove old result file
@@ -23,12 +20,12 @@ set hls_prj gemm_proj.prj
 
 # Open/reset the project
 open_project ${hls_prj} -reset
-# Top function of the design is "digitrec"
+# Top function of the design 
 set_top dut
 
 # Add design and testbench files
-add_files gemm.cpp 
-add_files -tb gemm_test.cpp 
+add_files gemm.cpp -cflags "-std=c++11"
+add_files -tb gemm_test.cpp -cflags "-std=c++11"
 add_files -tb data
 
 open_solution "solution1"
@@ -38,29 +35,9 @@ set_part {xc7z020clg484-1}
 # Target clock period is 10ns
 create_clock -period 10
 
-# Do not inline update_knn and knn_vote functions 
-# set_directive_inline -off update_knn
-# set_directive_inline -off knn_vote
-### You can add your own directives here ###
-
-# # Loop Unrolling optimizations
-# set_directive_unroll digitrec/KNN_INIT_LOOP
-# set_directive_unroll digitrec/TRAIN_LOOP_INNER
-# set_directive_unroll knn_vote/MIN_DIST_LOOP
-# set_directive_unroll knn_vote/NEAR_NEIGHBOR_INIT_LOOP
-# set_directive_unroll knn_vote/KNN_VOTE_VAL_LOOP
-# set_directive_unroll knn_vote/KNN_VOTE_ROW_LOOP
-# set_directive_unroll knn_vote/KNN_VOTE_NEAR_NEIGHBOR_LOOP
-# set_directive_unroll knn_vote/OUT_COUNTER_LOOP
-# set_directive_unroll knn_vote/IN_COUNTER_LOOP
-
-# Array Partitioning Optimizations
-# set_directive_array_partition -type complete digitrec knn_set
-# set_directive_array_partition -type complete update_knn min_distances
-# set_directive_array_partition -type complete knn_vote nearest_neighbors
 
 # Simulate the C++ design
-csim_design
+csim_design -O
 # Synthesize the design
 csynth_design
 # Co-simulate the design
