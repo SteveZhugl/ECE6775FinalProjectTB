@@ -50,4 +50,4 @@ gemm-hw: result/gemm_result.csv
 # Clean up the directory before submission
 clean:
 	@echo "Clean up output files"
-	rm -rf gemm_*_tb vivado_hls.log gemm_proj.prj result out.dat *~
+	rm -rf gemm_*_tb vivado_hls.log gemm_proj.prj result out.dat *~ xillydemo.bit gemm_tb

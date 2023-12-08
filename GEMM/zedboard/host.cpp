@@ -9,8 +9,6 @@
 #include <fstream>
 
 #include "typedefs.h"
-#include "timer.h"
-#include "model.h"
 #include "gemm.h"
 #include "attention_layer.h"
 
