@@ -18,7 +18,7 @@
 //------------------------------------------------------------------------
 const int TEST_SIZE = 100; // number of test instances
 
-void read_test_images(int8_t test_images[TEST_SIZE][256]) {
+void read_input_matricies(int test_images[TEST_SIZE][256]) {
   std::ifstream infile("data/test_images.dat");
   if (infile.is_open()) {
     for (int index = 0; index < TEST_SIZE; index++) {
@@ -32,7 +32,7 @@ void read_test_images(int8_t test_images[TEST_SIZE][256]) {
   }
 }
 
-void read_test_labels(int test_labels[TEST_SIZE]) {
+void read_output_matricies(int test_labels[TEST_SIZE]) {
   std::ifstream infile("data/test_labels.dat");
   if (infile.is_open()) {
     for (int index = 0; index < TEST_SIZE; index++) {
@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
   int test_labels[TEST_SIZE];
 
   // Timer
-  Timer timer("digitrec gemm on FPGA");
+  Timer timer("gemm on FPGA");
   // intermediate results
   int nbytes;
   int error = 0;

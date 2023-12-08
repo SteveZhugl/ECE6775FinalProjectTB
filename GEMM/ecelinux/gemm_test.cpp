@@ -14,7 +14,7 @@ void read_matrices
 ) 
 {
     std::ifstream infile_a("data/matrix_a_dat.dat");
-    std::ofstream outfile_a("data/draft_a.txt");
+    std::ofstream outfile_a("data/quantized_matrix_a.txt");
     if (infile_a.is_open()) 
     {
         for (int a = 0; a < MATRIX_DIM_X; a++) 
@@ -24,15 +24,15 @@ void read_matrices
                 dtype_in i;
                 infile_a >> i;
                 input_matrix1[a][b] = i;
-                outfile_a << input_matrix1[a][b] << ", ";
+                outfile_a << input_matrix1[a][b] << std::endl;
             }
-            outfile_a << std::endl;
         }
         infile_a.close();
         outfile_a.close();
     }
 
     std::ifstream infile_b("data/matrix_b_dat.dat");
+    std::ofstream outfile_b("data/quantized_matrix_b.txt");
     if (infile_b.is_open()) 
     {
         for (int a = 0; a < MATRIX_DIM_Y; a++) 
@@ -42,9 +42,11 @@ void read_matrices
                 dtype_in i;
                 infile_b >> i;
                 input_matrix2[a][b] = i;
+                outfile_b << input_matrix2[a][b] << std::endl;
             }
         }
         infile_b.close();
+        outfile_b.close();
     }
 }
 
@@ -52,7 +54,7 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
 {
     float difference = 0;
     std::ifstream infile_c("data/matrix_c_dat.dat");
-    std::ofstream outfile_c("data/draft_c.txt");
+    std::ofstream outfile_c("data/quantized_output_analysis.txt");
     float accerr = 0;
     float avgerr = 0;
     if (infile_c.is_open()) 
@@ -63,14 +65,13 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
             {
                 float i;
                 infile_c >> i;
-                std::cout << "Python Output: " << i << " Calculated Output: " << output[a][b] << std::endl;
+                // std::cout << "Python Output: " << i << " Calculated Output: " << output[a][b] << std::endl;
                 difference = abs((float)output[a][b] - i);
                 accerr += abs(difference);
                 avgerr += abs(difference / i);
-                outfile_c << i << " " << output[a][b] << " " << difference << std::endl;
-                std::cout << "Difference: " << difference << std::endl;
+                outfile_c << "Gold Output: " << i << " Quantized Output: " << output[a][b] << " Difference: " << difference << std::endl;
+                // std::cout << "Difference: " << difference << std::endl;
             }
-            outfile_c << std::endl;
         }
         accerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
         avgerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
