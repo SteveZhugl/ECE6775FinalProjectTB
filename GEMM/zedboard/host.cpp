@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 
+#include "timer.h"
 #include "typedefs.h"
 #include "gemm.h"
 #include "attention_layer.h"
@@ -43,14 +44,14 @@ void read_input_matricies(int input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y],
   }
 }
 
-void read_output_matricies(int output_matrix_c[MATRIX_DIM_X][MATRIX_DIM_Z]) {
+void read_output_matricies(int output_matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]) {
   std::ifstream infile_c("data/quantized_output.dat");
   if (infile_c.is_open()) {
     for (int x = 0; x < MATRIX_DIM_X; x++) {
       for (int z = 0; z < MATRIX_DIM_Z; z++) {
         int i;
         infile_c >> i;
-        input_matrix_B[x][z] = i;
+        output_matrix_C[x][z] = i;
       }
     }
     infile_c.close();
@@ -126,7 +127,7 @@ int main(int argc, char **argv) {
   //--------------------------------------------------------------------
   for (int x = 0; x < MATRIX_DIM_X; ++x) {
     for(int z = 0; z < MATRIX_DIM_Z; ++z) {
-      bit32_t output;
+      bit32 output;
       nbytes = read(fdr, (void *)&output, sizeof(output));
       assert(nbytes == sizeof(output));
       // verify results
