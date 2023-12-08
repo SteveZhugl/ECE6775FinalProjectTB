@@ -8190,5 +8190,5 @@ Gold Output: -291.18 Quantized Output: -259 Difference: 32
 Gold Output: -42.8837 Quantized Output: -16 Difference: 26
 Gold Output: -107.022 Quantized Output: -65 Difference: 42
 Gold Output: 14.3914 Quantized Output: -15 Difference: 29
-46.1848
-0.4646
+Overall Average Actual Error: 46.1848
+Overall Average Percentile Error: 0.4646

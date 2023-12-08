@@ -75,8 +75,8 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
         }
         accerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
         avgerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
-        outfile_c << accerr << std::endl;
-        outfile_c << avgerr;
+        outfile_c << "Overall Average Actual Error: " << accerr << std::endl;
+        outfile_c << "Overall Average Percentile Error: " << avgerr;
         outfile_c.close();
         infile_c.close();
     }
