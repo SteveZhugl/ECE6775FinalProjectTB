@@ -12,33 +12,50 @@
 #include "timer.h"
 #include "model.h"
 #include "gemm.h"
+#include "attention_layer.h"
 
 //------------------------------------------------------------------------
 // Helper function for reading images and labels
 //------------------------------------------------------------------------
-const int TEST_SIZE = 100; // number of test instances
 
-void read_input_matricies(int test_images[TEST_SIZE][256]) {
-  std::ifstream infile("data/test_images.dat");
-  if (infile.is_open()) {
-    for (int index = 0; index < TEST_SIZE; index++) {
-      for (int pixel = 0; pixel < 256; pixel++) {
+void read_input_matricies(int input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y], 
+                          int input_matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z]) {
+  std::ifstream infile_a("data/quantized_matrix_a.dat");
+  if (infile_a.is_open()) {
+    for (int x = 0; x < MATRIX_DIM_X; x++) {
+      for (int y = 0; y < MATRIX_DIM_Y; y++) {
         int i;
-        infile >> i;
-        test_images[index][pixel] = i;
+        infile_a >> i;
+        input_matrix_A[x][y] = i;
       }
     }
-    infile.close();
+    infile_a.close();
+  }
+
+  std::ifstream infile_b("data/quantized_matrix_b.dat");
+  if (infile_b.is_open()) {
+    for (int y = 0; y < MATRIX_DIM_Y; y++) {
+      for (int z = 0; z < MATRIX_DIM_Z; z++) {
+        int i;
+        infile_b >> i;
+        input_matrix_B[y][z] = i;
+      }
+    }
+    infile_b.close();
   }
 }
 
-void read_output_matricies(int test_labels[TEST_SIZE]) {
-  std::ifstream infile("data/test_labels.dat");
-  if (infile.is_open()) {
-    for (int index = 0; index < TEST_SIZE; index++) {
-      infile >> test_labels[index];
+void read_output_matricies(int output_matrix_c[MATRIX_DIM_X][MATRIX_DIM_Z]) {
+  std::ifstream infile_c("data/quantized_output.dat");
+  if (infile_c.is_open()) {
+    for (int x = 0; x < MATRIX_DIM_X; x++) {
+      for (int z = 0; z < MATRIX_DIM_Z; z++) {
+        int i;
+        infile_c >> i;
+        input_matrix_B[x][z] = i;
+      }
     }
-    infile.close();
+    infile_c.close();
   }
 }
 
@@ -58,9 +75,10 @@ int main(int argc, char **argv) {
   }
 
   // Arrays to store test data and expected results (labels)
-  int8_t test_images[TEST_SIZE][256];
-  bit32_t test_image;
-  int test_labels[TEST_SIZE];
+  int input_matrix1[MATRIX_DIM_X][MATRIX_DIM_Y]; 
+  int input_matrix2[MATRIX_DIM_Y][MATRIX_DIM_Z];
+  int output_matrix[MATRIX_DIM_X][MATRIX_DIM_Z];
+  // bit32_t test_image;
 
   // Timer
   Timer timer("gemm on FPGA");
@@ -73,42 +91,59 @@ int main(int argc, char **argv) {
   //--------------------------------------------------------------------
   // Read data from the input file into two arrays
   //--------------------------------------------------------------------
-  read_test_images(test_images);
-  read_test_labels(test_labels);
+  read_input_matricies(input_matrix1, input_matrix2);
+  read_output_matricies(output_matrix);
 
   timer.start();
   //--------------------------------------------------------------------
   // Send data to accelerator
   //--------------------------------------------------------------------
-  for (int i = 0; i < TEST_SIZE; ++i) {
-    // Send 32-bit value through the write channel
-    for (int j = 0; j < 8; j++) {
-      for (int k = 0; k < 32; k++) {
-        test_image(k, k) = test_images[i][j * 32 + k];
-      }
-      nbytes = write(fdw, (void *)&test_image, sizeof(test_image));
-      assert(nbytes == sizeof(test_image));
+  // for (int i = 0; i < TEST_SIZE; ++i) {
+  //   // Send 32-bit value through the write channel
+  //   for (int j = 0; j < 8; j++) {
+  //     for (int k = 0; k < 32; k++) {
+  //       test_image(k, k) = test_images[i][j * 32 + k];
+  //     }
+  //     nbytes = write(fdw, (void *)&test_image, sizeof(test_image));
+  //     assert(nbytes == sizeof(test_image));
+  //   }
+  // }
+
+  for (int x = 0; x < MATRIX_DIM_X; ++x) {
+    for (int y = 0; y < MATRIX_DIM_Y; ++y) {
+      nbytes = write(fdw, (void *)&input_matrix1[x][y], sizeof(input_matrix1[x][y]));
+      assert(nbytes == sizeof(input_matrix1[x][y]));
+    }
+  }
+
+  for (int y = 0; y < MATRIX_DIM_Y; ++y) {
+    for (int z = 0; z < MATRIX_DIM_Z; ++z) {
+      nbytes = write(fdw, (void *)&input_matrix1[y][z], sizeof(input_matrix1[y][z]));
+      assert(nbytes == sizeof(input_matrix1[y][z]));
     }
   }
 
   //--------------------------------------------------------------------
   // Receive data from the accelerator
   //--------------------------------------------------------------------
-  for (int i = 0; i < TEST_SIZE; ++i) {
-    bit32_t output;
-    nbytes = read(fdr, (void *)&output, sizeof(output));
-    assert(nbytes == sizeof(output));
-    // verify results
-    if (output == test_labels[i])
-      correct += 1.0;
+  for (int x = 0; x < MATRIX_DIM_X; ++x) {
+    for(int z = 0; z < MATRIX_DIM_Z; ++z) {
+      bit32_t output;
+      nbytes = read(fdr, (void *)&output, sizeof(output));
+      assert(nbytes == sizeof(output));
+      // verify results
+      if (output == output_matrix[x][z])
+        correct += 1.0;
+    }
   }
   timer.stop();
 
+  int num_operations = MATRIX_DIM_X * MATRIX_DIM_Z;
   //--------------------------------------------------------------------
   // Calculate error rate
   //--------------------------------------------------------------------
-  std::cout << "Testing images: " << TEST_SIZE << std::endl;
-  std::cout << "Accuracy: " << correct / TEST_SIZE << std::endl;
+  std::cout << "Number of Operations: " << num_operations << std::endl;
+  std::cout << "Accuracy: " << correct / num_operations << std::endl;
 
   return 0;
 }

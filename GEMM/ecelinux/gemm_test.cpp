@@ -54,7 +54,8 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
 {
     float difference = 0;
     std::ifstream infile_c("data/matrix_c_dat.dat");
-    std::ofstream outfile_c("data/quantized_output_analysis.txt");
+    std::ofstream outfile_c_1("data/quantized_output.txt");
+    std::ofstream outfile_c_2("data/quantized_output_analysis.txt");
     float accerr = 0;
     float avgerr = 0;
     if (infile_c.is_open()) 
@@ -69,15 +70,17 @@ void verify_output(dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z])
                 difference = abs((float)output[a][b] - i);
                 accerr += abs(difference);
                 avgerr += abs(difference / i);
-                outfile_c << "Gold Output: " << i << " Quantized Output: " << output[a][b] << " Difference: " << difference << std::endl;
+                outfile_c_1 << output[a][b] << std::endl;
+                outfile_c_2 << "Gold Output: " << i << " Quantized Output: " << output[a][b] << " Difference: " << difference << std::endl;
                 // std::cout << "Difference: " << difference << std::endl;
             }
         }
         accerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
         avgerr /= MATRIX_DIM_X * MATRIX_DIM_Z;
-        outfile_c << "Overall Average Actual Error: " << accerr << std::endl;
-        outfile_c << "Overall Average Percentile Error: " << avgerr;
-        outfile_c.close();
+        outfile_c_2 << "Overall Average Actual Error: " << accerr << std::endl;
+        outfile_c_2 << "Overall Average Percentile Error: " << avgerr;
+        outfile_c_1.close();
+        outfile_c_2.close();
         infile_c.close();
     }
 }
