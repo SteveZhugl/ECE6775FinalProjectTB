@@ -17,8 +17,8 @@
 // Helper function for reading images and labels
 //------------------------------------------------------------------------
 
-void read_input_matricies(int input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y], 
-                          int input_matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z]) {
+void read_input_matricies(int8_t input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y], 
+                          int8_t input_matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z]) {
   std::ifstream infile_a("data/quantized_matrix_a.dat");
   if (infile_a.is_open()) {
     for (int x = 0; x < MATRIX_DIM_X; x++) {
@@ -44,7 +44,7 @@ void read_input_matricies(int input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y],
   }
 }
 
-void read_output_matricies(int output_matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]) {
+void read_output_matricies(int8_t output_matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]) {
   std::ifstream infile_c("data/quantized_output.dat");
   if (infile_c.is_open()) {
     for (int x = 0; x < MATRIX_DIM_X; x++) {
@@ -74,10 +74,10 @@ int main(int argc, char **argv) {
   }
 
   // Arrays to store test data and expected results (labels)
-  int input_matrix1[MATRIX_DIM_X][MATRIX_DIM_Y]; 
-  int input_matrix2[MATRIX_DIM_Y][MATRIX_DIM_Z];
-  int output_matrix[MATRIX_DIM_X][MATRIX_DIM_Z];
-  // bit32_t test_image;
+  int8_t input_matrix1[MATRIX_DIM_X][MATRIX_DIM_Y]; 
+  int8_t input_matrix2[MATRIX_DIM_Y][MATRIX_DIM_Z];
+  int8_t output_matrix[MATRIX_DIM_X][MATRIX_DIM_Z];
+  bit32_t test_image;
 
   // Timer
   Timer timer("gemm on FPGA");
@@ -110,15 +110,21 @@ int main(int argc, char **argv) {
 
   for (int x = 0; x < MATRIX_DIM_X; ++x) {
     for (int y = 0; y < MATRIX_DIM_Y; ++y) {
-      nbytes = write(fdw, (void *)&input_matrix1[x][y], sizeof(input_matrix1[x][y]));
-      assert(nbytes == sizeof(input_matrix1[x][y]));
+      for (int byte_offset = 0; byte_offset < 32; ++byte_offset) {
+        test_image(byte_offset, byte_offset) = input_matrix1[x][y * 32 + byte_offset];
+      }
+      nbytes = write(fdw, (void *)&test_image, sizeof(test_image));
+      assert(nbytes == sizeof(test_image));
     }
   }
 
   for (int y = 0; y < MATRIX_DIM_Y; ++y) {
     for (int z = 0; z < MATRIX_DIM_Z; ++z) {
-      nbytes = write(fdw, (void *)&input_matrix1[y][z], sizeof(input_matrix1[y][z]));
-      assert(nbytes == sizeof(input_matrix1[y][z]));
+      for (int byte_offset = 0; byte_offset < 32; ++byte_offset) {
+        test_image(byte_offset, byte_offset) = input_matrix1[y][z * 32 + byte_offset];
+      }
+      nbytes = write(fdw, (void *)&test_image, sizeof(test_image));
+      assert(nbytes == sizeof(test_image));
     }
   }
 
@@ -127,7 +133,7 @@ int main(int argc, char **argv) {
   //--------------------------------------------------------------------
   for (int x = 0; x < MATRIX_DIM_X; ++x) {
     for(int z = 0; z < MATRIX_DIM_Z; ++z) {
-      bit32 output;
+      bit32_t output;
       nbytes = read(fdr, (void *)&output, sizeof(output));
       assert(nbytes == sizeof(output));
       // verify results
