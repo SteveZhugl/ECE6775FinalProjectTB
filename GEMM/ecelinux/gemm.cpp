@@ -3,10 +3,6 @@
 #include "gemm.h"
 #include "typedefs.h"
 
-// const int MATRIX_DIM_X = 10; 
-// const int MATRIX_DIM_Y = 10; 
-// const int MATRIX_DIM_Z = 10; 
-
 void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out) 
 {
     bit32_t input1[MATRIX_DIM_X][MATRIX_DIM_Y];
@@ -14,13 +10,6 @@ void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out)
     bit32_t output[MATRIX_DIM_X][MATRIX_DIM_Z];
     bit32_t stream_input1;
     bit32_t stream_input2;
-
-    // for(int a = 0; a < MATRIX_DIM_X; a++) {
-    //     for(int b = 0; b < MATRIX_DIM_Y; b++) {
-    //         stream_input1 = strm_in.read();
-    //         std::cout << stream_input1 << std::endl;
-    //     }
-    // }
 
     // read stream 1
     int input_index = 0;

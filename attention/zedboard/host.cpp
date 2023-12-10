@@ -19,7 +19,7 @@
 
 void read_input_matricies(bit32_t input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y],
                           bit32_t input_matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z]) {
-  std::ifstream infile_a("data/quantized_matrix_a.txt");
+  std::ifstream infile_a("data/input_matrix1.dat");
   if (infile_a.is_open()) {
     for (int x = 0; x < MATRIX_DIM_X; x++) {
       for (int y = 0; y < MATRIX_DIM_Y; y++) {
@@ -31,7 +31,7 @@ void read_input_matricies(bit32_t input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y],
     infile_a.close();
   }
   
-  std::ifstream infile_b("data/quantized_matrix_b.txt");
+  std::ifstream infile_b("data/input_matrix2.dat");
   if (infile_b.is_open()) {
     for (int y = 0; y < MATRIX_DIM_Y; y++) {
       for (int z = 0; z < MATRIX_DIM_Z; z++) {
@@ -45,7 +45,7 @@ void read_input_matricies(bit32_t input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y],
 }
 
 void read_output_matricies(bit32_t output_matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]) {
-  std::ifstream infile_c("data/quantized_output.txt");
+  std::ifstream infile_c("data/output_matrix.dat");
   if (infile_c.is_open()) {
     for (int x = 0; x < MATRIX_DIM_X; x++) {
       for (int z = 0; z < MATRIX_DIM_Z; z++) {
@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
   bit32_t test_image;
 
   // Timer
-  Timer timer("gemm on FPGA");
+  Timer timer("attention on FPGA");
   // intermediate results
   int nbytes;
   int error = 0;
