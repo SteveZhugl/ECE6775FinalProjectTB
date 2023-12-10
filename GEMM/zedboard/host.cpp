@@ -17,25 +17,25 @@
 // Helper function for reading images and labels
 //------------------------------------------------------------------------
 
-void read_input_matricies(int8_t input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y], 
-                          int8_t input_matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z]) {
-  std::ifstream infile_a("data/quantized_matrix_a.dat");
+void read_input_matricies(bit32_t input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y],
+                          bit32_t input_matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z]) {
+  std::ifstream infile_a("data/quantized_matrix_a.txt");
   if (infile_a.is_open()) {
     for (int x = 0; x < MATRIX_DIM_X; x++) {
       for (int y = 0; y < MATRIX_DIM_Y; y++) {
-        int i;
+        bit32_t i;
         infile_a >> i;
         input_matrix_A[x][y] = i;
       }
     }
     infile_a.close();
   }
-
-  std::ifstream infile_b("data/quantized_matrix_b.dat");
+  
+  std::ifstream infile_b("data/quantized_matrix_b.txt");
   if (infile_b.is_open()) {
     for (int y = 0; y < MATRIX_DIM_Y; y++) {
       for (int z = 0; z < MATRIX_DIM_Z; z++) {
-        int i;
+        bit32_t i;
         infile_b >> i;
         input_matrix_B[y][z] = i;
       }
@@ -44,12 +44,12 @@ void read_input_matricies(int8_t input_matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y],
   }
 }
 
-void read_output_matricies(int8_t output_matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]) {
-  std::ifstream infile_c("data/quantized_output.dat");
+void read_output_matricies(bit32_t output_matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]) {
+  std::ifstream infile_c("data/quantized_output.txt");
   if (infile_c.is_open()) {
     for (int x = 0; x < MATRIX_DIM_X; x++) {
       for (int z = 0; z < MATRIX_DIM_Z; z++) {
-        int i;
+        bit32_t i;
         infile_c >> i;
         output_matrix_C[x][z] = i;
       }
@@ -74,9 +74,9 @@ int main(int argc, char **argv) {
   }
 
   // Arrays to store test data and expected results (labels)
-  int8_t input_matrix1[MATRIX_DIM_X][MATRIX_DIM_Y]; 
-  int8_t input_matrix2[MATRIX_DIM_Y][MATRIX_DIM_Z];
-  int8_t output_matrix[MATRIX_DIM_X][MATRIX_DIM_Z];
+  bit32_t input_matrix1[MATRIX_DIM_X][MATRIX_DIM_Y];
+  bit32_t input_matrix2[MATRIX_DIM_Y][MATRIX_DIM_Z];
+  bit32_t output_matrix[MATRIX_DIM_X][MATRIX_DIM_Z];
   bit32_t test_image;
 
   // Timer
@@ -100,9 +100,7 @@ int main(int argc, char **argv) {
 
   for (int x = 0; x < MATRIX_DIM_X; ++x) {
     for (int y = 0; y < MATRIX_DIM_Y; ++y) {
-      for (int byte_offset = 0; byte_offset < 32; ++byte_offset) {
-        test_image(byte_offset, byte_offset) = input_matrix1[x][y * 32 + byte_offset];
-      }
+      test_image = input_matrix1[x][y];
       nbytes = write(fdw, (void *)&test_image, sizeof(test_image));
       assert(nbytes == sizeof(test_image));
     }
@@ -110,9 +108,7 @@ int main(int argc, char **argv) {
 
   for (int y = 0; y < MATRIX_DIM_Y; ++y) {
     for (int z = 0; z < MATRIX_DIM_Z; ++z) {
-      for (int byte_offset = 0; byte_offset < 32; ++byte_offset) {
-        test_image(byte_offset, byte_offset) = input_matrix1[y][z * 32 + byte_offset];
-      }
+      test_image = input_matrix2[y][z];
       nbytes = write(fdw, (void *)&test_image, sizeof(test_image));
       assert(nbytes == sizeof(test_image));
     }
