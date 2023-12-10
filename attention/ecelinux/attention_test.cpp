@@ -14,7 +14,7 @@ void read_matrices
     bit32_t input_matrix2[MATRIX_DIM_Y][MATRIX_DIM_Z]
 ) 
 {
-    std::ifstream infile_a("data/input_matrix1.dat");
+    std::ifstream infile_a("data/quantized_input_matrix1.dat");
     if (infile_a.is_open()) 
     {
         for (int a = 0; a < MATRIX_DIM_X; a++) 
@@ -29,7 +29,7 @@ void read_matrices
         infile_a.close();
     }
 
-    std::ifstream infile_b("data/input_matrix2.dat");
+    std::ifstream infile_b("data/quantized_input_matrix2.dat");
     if (infile_b.is_open()) 
     {
         for (int a = 0; a < MATRIX_DIM_Y; a++) 
@@ -48,7 +48,7 @@ void read_matrices
 void verify_output(bit32_t output[MATRIX_DIM_X][MATRIX_DIM_Z])
 {
     float difference = 0.0;
-    std::ifstream infile_c("data/output_matrix.dat");
+    std::ifstream infile_c("data/quantized_output_matrix.dat");
     if (infile_c.is_open()) 
     {
         for (int a = 0; a < MATRIX_DIM_X; a++) 

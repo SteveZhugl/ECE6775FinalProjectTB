@@ -38,7 +38,7 @@ void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out)
     // write out the result
     for (int i = 0; i < MATRIX_DIM_X; ++i) {
         for(int k = 0; k < MATRIX_DIM_Z; ++k) {
-            std::cout << output[i][k] << std::endl;
+            // std::cout << output[i][k] << std::endl;
             strm_out.write(output[i][k]);
         }
     }

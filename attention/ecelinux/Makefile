@@ -22,8 +22,8 @@ CFLAGS=-g -I${VHLS_INC} -DHLS_NO_XIL_FPO_LIB -std=c++11
 # Compile & run attention implementation
 all: attention-sw attention-hw
 
-#attention_tb: attention.cpp attention_test.cpp
-attention_tb: attention_test.cpp
+attention_tb: attention.cpp attention_test.cpp
+#attention_tb: attention_test.cpp
 	g++ ${CFLAGS} -DK_CONST=$* $^ -o $@
 
 result/attention_sw_result.txt: attention_tb
@@ -50,4 +50,4 @@ attention-hw: result/attention_result.csv
 # Clean up the directory before submission
 clean:
 	@echo "Clean up output files"
-	rm -rf attention_*_tb vivado_hls.log attention_proj.prj result out.dat *~
+	rm -rf attention_*_tb vivado_hls.log attention_proj.prj result out.dat *~ xillydemo.bit attention_tb
