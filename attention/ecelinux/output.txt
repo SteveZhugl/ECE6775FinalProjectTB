@@ -1,0 +1,32 @@
+Python Output: 1 Calculated Output: 1
+Difference: 0
+Python Output: 3.89525e-19 Calculated Output: 3.89524e-19
+Difference: 0
+Python Output: 1.63165e-12 Calculated Output: 1.63166e-12
+Difference: 0
+Python Output: 8.58393e-14 Calculated Output: 8.58393e-14
+Difference: 0
+Python Output: 6.28005e-21 Calculated Output: 2.7211e-14
+Difference: 0
+Python Output: 0.00246661 Calculated Output: 0.00246661
+Difference: 0
+Python Output: 0.997533 Calculated Output: 0.997533
+Difference: 0
+Python Output: 5.70589e-20 Calculated Output: -3.70353e-14
+Difference: 0
+Python Output: 4.46675e-30 Calculated Output: 8.26128e-08
+Difference: 0
+Python Output: 0.00108348 Calculated Output: 0.00108348
+Difference: 0
+Python Output: 0.998917 Calculated Output: 0.998916
+Difference: 0
+Python Output: 3.34542e-13 Calculated Output: 3.34541e-13
+Difference: 0
+Python Output: 0.819687 Calculated Output: -1.66216e-07
+Difference: 0
+Python Output: 0.0156263 Calculated Output: -4.35447e-05
+Difference: 0
+Python Output: 0.164687 Calculated Output: 6.01656e-06
+Difference: 0
+Python Output: 4.6152e-07 Calculated Output: 1.00004
+Difference: 1
