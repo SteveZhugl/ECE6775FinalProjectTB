@@ -6,8 +6,7 @@
 #ifndef TYPEDEFS_H
 #define TYPEDEFS_H
 
-#include "ap_int.h"
-#include "ap_fixed.h"
+#include <ap_int.h>
 
 typedef ap_int<6>  dtype_in;
 typedef ap_int<20> dtype_out; 

@@ -7,27 +7,40 @@
 // const int MATRIX_DIM_Y = 10; 
 // const int MATRIX_DIM_Z = 10; 
 
-void dut(hls::stream<dtype_in> &strm_in, hls::stream<dtype_out> &strm_out) 
+const int BUS_WIDTH = 32;
+
+void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out) 
 {
-    dtype_in input1[MATRIX_DIM_X][MATRIX_DIM_Y];
-    dtype_in input2[MATRIX_DIM_Y][MATRIX_DIM_Z];
-    dtype_out output[MATRIX_DIM_X][MATRIX_DIM_Z];
-    float stream_input1;
-    float stream_input2;
+    bit32_t input1[MATRIX_DIM_X][MATRIX_DIM_Y];
+    bit32_t input2[MATRIX_DIM_Y][MATRIX_DIM_Z];
+    bit32_t output[MATRIX_DIM_X][MATRIX_DIM_Z];
+    bit32_t stream_input1;
+    bit32_t stream_input2;
 
     // read stream 1
+    int bitcount = 0;
     for (int i = 0; i < MATRIX_DIM_X; ++i) {
-        for(int j = 0; j < MATRIX_DIM_Y; ++j) {
+        for(int j = 0; j < MATRIX_DIM_Y / BUS_WIDTH; ++j) {
             stream_input1 = strm_in.read();
-            input1[i][j] = stream_input1;
+            for (int k = 0; k < BUS_WIDTH; k++) {
+                int bit_pos = j * BUS_WIDTH + k;
+                if (bit_pos < MATRIX_DIM_Y) {
+                    input1[i][bit_pos] = input_l(k, k); // Assuming you want to read each bit into the matrix
+                }
+            }
         }
     }
 
     // read stream 2
     for (int j = 0; j < MATRIX_DIM_Y; ++j) {
-        for(int k = 0; k < MATRIX_DIM_Z; ++k) {
+        for(int k = 0; k < MATRIX_DIM_Z / BUS_WIDTH; ++k) {
             stream_input2 = strm_in.read();
-            input2[j][k] = stream_input2;
+            for (int k = 0; k < BUS_WIDTH; k++) {
+                int bit_pos = j * BUS_WIDTH + k;
+                if (bit_pos < MATRIX_DIM_Z) {
+                    input2[i][bit_pos] = input_l(k, k); // Assuming you want to read each bit into the matrix
+                }
+            }
         }
     }
 

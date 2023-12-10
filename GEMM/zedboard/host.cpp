@@ -97,16 +97,6 @@ int main(int argc, char **argv) {
   //--------------------------------------------------------------------
   // Send data to accelerator
   //--------------------------------------------------------------------
-  // for (int i = 0; i < TEST_SIZE; ++i) {
-  //   // Send 32-bit value through the write channel
-  //   for (int j = 0; j < 8; j++) {
-  //     for (int k = 0; k < 32; k++) {
-  //       test_image(k, k) = test_images[i][j * 32 + k];
-  //     }
-  //     nbytes = write(fdw, (void *)&test_image, sizeof(test_image));
-  //     assert(nbytes == sizeof(test_image));
-  //   }
-  // }
 
   for (int x = 0; x < MATRIX_DIM_X; ++x) {
     for (int y = 0; y < MATRIX_DIM_Y; ++y) {
