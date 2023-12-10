@@ -2,12 +2,12 @@ import random
 import numpy as np
 
 def generate_data():
-    # i = 8
-    # j = 8
-    # k = 8 
-    i = 4
-    j = 4
-    k = 4
+    i = 64
+    j = 64
+    k = 64 
+    # i = 4
+    # j = 4
+    # k = 4
     f1 = open("data/input_matrix1.dat", "w")
     f2 = open("data/input_matrix2.dat", "w")
     f3 = open("data/output_matrix.dat", "w")
@@ -17,7 +17,7 @@ def generate_data():
     output_matrix = np.zeros((i, k))
 
     mean = 0
-    std_dev = 4
+    std_dev = 1.5
 
     ij_points = i * j
     jk_points = j * k
