@@ -9,14 +9,14 @@
 #ifndef GEMM
 #define GEMM
 
-void dut(hls::stream<dtype_in> &strm_in, hls::stream<dtype_out> &strm_out);
+void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out);
 
 template <int MATRIX_DIM_X, int MATRIX_DIM_Y, int MATRIX_DIM_Z>
 void matrix_multiply
 (
-    dtype_in matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y], 
-    dtype_in matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z],
-    dtype_out matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]
+    bit32_t matrix_A[MATRIX_DIM_X][MATRIX_DIM_Y], 
+    bit32_t matrix_B[MATRIX_DIM_Y][MATRIX_DIM_Z],
+    bit32_t matrix_C[MATRIX_DIM_X][MATRIX_DIM_Z]
 )
 {
     for(int i = 0; i < MATRIX_DIM_X; ++i)

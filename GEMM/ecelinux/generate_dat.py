@@ -1,14 +1,14 @@
 import random
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 def generate_data():
-    i = 128
-    j = 256
-    k = 64 
-    # i = 4
-    # j = 4
-    # k = 4
+    # i = 128
+    # j = 256
+    # k = 64 
+    i = 4
+    j = 4
+    k = 4
     f1 = open("data/matrix_a_dat.dat", "w")
     f2 = open("data/matrix_b_dat.dat", "w")
     f3 = open("data/matrix_c_dat.dat", "w")
@@ -26,16 +26,16 @@ def generate_data():
     random_data_jk = np.random.normal(mean, std_dev, jk_points)
 
     #! REMOVE LATER Plot a histogram to visualize the distribution
-    plt.hist(random_data_ij, bins=30, density=True, alpha=0.6, color='g')
+    # plt.hist(random_data_ij, bins=30, density=True, alpha=0.6, color='g')
 
-    # Plot the probability density function (PDF)   
-    xmin, xmax = plt.xlim()
-    x = np.linspace(xmin, xmax, 100)
-    p = np.exp(-0.5 * ((x - mean) / std_dev) ** 2) / (std_dev * np.sqrt(2 * np.pi))
-    plt.plot(x, p, 'k', linewidth=2)
+    # # Plot the probability density function (PDF)   
+    # xmin, xmax = plt.xlim()
+    # x = np.linspace(xmin, xmax, 100)
+    # p = np.exp(-0.5 * ((x - mean) / std_dev) ** 2) / (std_dev * np.sqrt(2 * np.pi))
+    # plt.plot(x, p, 'k', linewidth=2)
 
-    plt.title("Generated Data with Normal Distribution")
-    plt.savefig("output.png")
+    # plt.title("Generated Data with Normal Distribution")
+    # plt.savefig("output.png")
 
     for a in range(0, i * j):
         matrix_1[int(a / j)][a % j] = random_data_ij[a]

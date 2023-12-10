@@ -1,13 +1,11 @@
 #include <iostream> 
 #include "attention_layer.h"
 #include "gemm.h"
-
+#include "typedefs.h"
 
 // const int MATRIX_DIM_X = 10; 
 // const int MATRIX_DIM_Y = 10; 
 // const int MATRIX_DIM_Z = 10; 
-
-const int BUS_WIDTH = 32;
 
 void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out) 
 {
@@ -17,30 +15,31 @@ void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out)
     bit32_t stream_input1;
     bit32_t stream_input2;
 
+    // for(int a = 0; a < MATRIX_DIM_X; a++) {
+    //     for(int b = 0; b < MATRIX_DIM_Y; b++) {
+    //         stream_input1 = strm_in.read();
+    //         std::cout << stream_input1 << std::endl;
+    //     }
+    // }
+
     // read stream 1
-    int bitcount = 0;
-    for (int i = 0; i < MATRIX_DIM_X; ++i) {
-        for(int j = 0; j < MATRIX_DIM_Y / BUS_WIDTH; ++j) {
+    int input_index = 0;
+    for (int i = 0; i < MATRIX_DIM_X; ++i) 
+    {
+        for(int j = 0; j < MATRIX_DIM_Y; ++j) 
+        {
             stream_input1 = strm_in.read();
-            for (int k = 0; k < BUS_WIDTH; k++) {
-                int bit_pos = j * BUS_WIDTH + k;
-                if (bit_pos < MATRIX_DIM_Y) {
-                    input1[i][bit_pos] = input_l(k, k); // Assuming you want to read each bit into the matrix
-                }
-            }
+            input_index = i * MATRIX_DIM_X + j;
+            input1[i][j] = stream_input1; // Assuming you want to read each bit into the matrix
         }
     }
 
     // read stream 2
     for (int j = 0; j < MATRIX_DIM_Y; ++j) {
-        for(int k = 0; k < MATRIX_DIM_Z / BUS_WIDTH; ++k) {
+        for(int k = 0; k < MATRIX_DIM_Z; ++k) {
             stream_input2 = strm_in.read();
-            for (int k = 0; k < BUS_WIDTH; k++) {
-                int bit_pos = j * BUS_WIDTH + k;
-                if (bit_pos < MATRIX_DIM_Z) {
-                    input2[i][bit_pos] = input_l(k, k); // Assuming you want to read each bit into the matrix
-                }
-            }
+            input_index = j * MATRIX_DIM_Y + k;
+            input2[j][k] = stream_input2; // Assuming you want to read each bit into the matrix
         }
     }
 
@@ -50,6 +49,7 @@ void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out)
     // write out the result
     for (int i = 0; i < MATRIX_DIM_X; ++i) {
         for(int k = 0; k < MATRIX_DIM_Z; ++k) {
+            std::cout << output[i][k] << std::endl;
             strm_out.write(output[i][k]);
         }
     }
