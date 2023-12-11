@@ -20,7 +20,7 @@ void attention_mechanism
 )
 {
     bit32_t matrix_gemm_output[MATRIX_DIM_X][MATRIX_DIM_Z];
-    bit32_t euler_number = 2.7182818284590;
+    float euler_number = 2.7182818284590;
 
     for(int i = 0; i < MATRIX_DIM_X; ++i)
     {
@@ -50,7 +50,7 @@ void attention_mechanism
 
         for (int k = 0; k < MATRIX_DIM_Z; ++k) {
             euler_sums[k] = 1.0;
-            for (int a = 1; a <= 100; ++a) {
+            for (int a = 1; a <= 1000; ++a) {
                 double term = 1.0;
                 for (int b = 1; b <= a; ++b) {
                     term *= matrix_gemm_output[i][k] / b;
@@ -61,7 +61,7 @@ void attention_mechanism
             euler_layer_sum += euler_sums[k];
         }
         for (int l = 0; l < MATRIX_DIM_Z; ++l) {
-            matrix_output[i][l] = (euler_sums[l] / euler_layer_sum);
+            matrix_output[i][l] = (euler_sums[l] / euler_layer_sum) * 100;
             std::cout << matrix_output[i][l]  << std::endl;
         }
     }

@@ -31,7 +31,7 @@ def generate_data():
     output_matrix = np.zeros((i, k))
 
     mean = 0
-    std_dev = 4
+    std_dev = 1
 
     ij_points = i * j
     jk_points = j * k
@@ -59,8 +59,8 @@ def generate_data():
         f1_quantized.write(str(formatted_matrix_1_quantized) + "\n")
     for b in range(0, j * k):
         matrix_2[int(b / k)][b % k] = random_data_jk[b]
-        matrix_2_quantized[int(b / j)][b % j] = int(custom_round(random_data_jk[b]))
-        formatted_matrix_2_quantized = "{:.0f}".format(matrix_2_quantized[int(b / j)][b % j]) if matrix_2_quantized[int(b / j)][b % j].is_integer() else str(matrix_2_quantized[int(b / j)][b % j])
+        matrix_2_quantized[int(b / k)][b % k] = int(custom_round(random_data_jk[b]))
+        formatted_matrix_2_quantized = "{:.0f}".format(matrix_2_quantized[int(b / k)][b % k]) if matrix_2_quantized[int(b / k)][b % k].is_integer() else str(matrix_2_quantized[int(b / k)][b % k])
         f2.write(str(random_data_jk[b]) + "\n")
         f2_quantized.write(str(formatted_matrix_2_quantized) + "\n")
 
@@ -79,7 +79,7 @@ def generate_data():
         probabilities = exponential_logits / np.sum(exponential_logits)
         output_matrix[i, :] = probabilities
         for j in range(0, len(probabilities)):
-            f3.write(str(probabilities[j]) + "\n")
+            f3.write(str(probabilities[j] * 100) + "\n")
             
     for i, row in enumerate(gemm_output_quantized):
         vector_values = np.array(row)
@@ -87,7 +87,7 @@ def generate_data():
         probabilities = exponential_logits / np.sum(exponential_logits)
         output_matrix[i, :] = probabilities
         for j in range(0, len(probabilities)):
-            f3_quantized.write(str(probabilities[j]) + "\n")
+            f3_quantized.write(str(probabilities[j] * 100) + "\n")
 
     # print("Input matrix 1: " + str(matrix_1))
     # print("Input matrix 2: " + str(matrix_2))
