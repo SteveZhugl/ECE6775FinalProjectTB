@@ -1,256 +1,32 @@
-Python Output: 0.00730529 Calculated Output: 0.00730529
+Python Output: 0.00296531 Calculated Output: 3.52536
+Difference: 3
+Python Output: 2.56084e-05 Calculated Output: 0.030445
 Difference: 0
-Python Output: 1.94132e-06 Calculated Output: 1.94136e-06
+Python Output: 5.04537e-06 Calculated Output: 0.00599824
 Difference: 0
-Python Output: 1.14693e-06 Calculated Output: 1.14694e-06
+Python Output: 1.55088e-07 Calculated Output: 0.000184464
 Difference: 0
-Python Output: 0.0719918 Calculated Output: 0.0719918
+Python Output: 0.0291811 Calculated Output: 34.6925
+Difference: 34
+Python Output: 3.81853e-07 Calculated Output: 0.000454037
 Difference: 0
-Python Output: 0.0011194 Calculated Output: 0.0011194
+Python Output: 8.60153e-08 Calculated Output: 0.000102141
 Difference: 0
-Python Output: 0.069924 Calculated Output: 0.069924
+Python Output: 2.43353e-07 Calculated Output: 0.000289263
 Difference: 0
-Python Output: 1.45433e-05 Calculated Output: 1.45433e-05
+Python Output: 0.000776992 Calculated Output: 0.923739
 Difference: 0
-Python Output: 0.0222696 Calculated Output: 0.0222696
+Python Output: 4.26808e-05 Calculated Output: 0.0507417
 Difference: 0
-Python Output: 0.000273605 Calculated Output: 0.000273605
+Python Output: 0.000223947 Calculated Output: 0.266243
 Difference: 0
-Python Output: 0.000872292 Calculated Output: 0.000872292
+Python Output: 0.000798495 Calculated Output: 0.949304
 Difference: 0
-Python Output: 0.00973885 Calculated Output: 0.00973885
+Python Output: 4.23436e-08 Calculated Output: 5.19015e-05
 Difference: 0
-Python Output: 5.96829e-07 Calculated Output: 5.96736e-07
-Difference: 0
-Python Output: 3.92009e-06 Calculated Output: 3.92008e-06
-Difference: 0
-Python Output: 2.08958e-05 Calculated Output: 2.08958e-05
-Difference: 0
-Python Output: 1.67738e-05 Calculated Output: 1.67738e-05
-Difference: 0
-Python Output: 2.00411e-07 Calculated Output: 2.00759e-07
-Difference: 0
-Python Output: 9.26406e-08 Calculated Output: 9.29585e-08
-Difference: 0
-Python Output: 0.0206952 Calculated Output: 0.0206952
-Difference: 0
-Python Output: 0.0223146 Calculated Output: 0.0223146
-Difference: 0
-Python Output: 4.18263e-06 Calculated Output: 4.1826e-06
-Difference: 0
-Python Output: 0.00360339 Calculated Output: 0.00360339
-Difference: 0
-Python Output: 1.20892e-06 Calculated Output: 1.20896e-06
-Difference: 0
-Python Output: 0.000715623 Calculated Output: 0.000715624
-Difference: 0
-Python Output: 4.41962e-07 Calculated Output: 4.41909e-07
-Difference: 0
-Python Output: 0.00327641 Calculated Output: 0.00327641
-Difference: 0
-Python Output: 0.0291912 Calculated Output: 0.0291912
-Difference: 0
-Python Output: 0.0150376 Calculated Output: 0.0150376
-Difference: 0
-Python Output: 0.0248785 Calculated Output: 0.0248785
-Difference: 0
-Python Output: 5.75788e-07 Calculated Output: 5.75908e-07
-Difference: 0
-Python Output: 6.89989e-06 Calculated Output: 6.8999e-06
-Difference: 0
-Python Output: 6.69214e-06 Calculated Output: 6.69215e-06
-Difference: 0
-Python Output: 2.28382e-05 Calculated Output: 2.28382e-05
-Difference: 0
-Python Output: 5.35579e-07 Calculated Output: 5.35606e-07
-Difference: 0
-Python Output: 1.47177e-07 Calculated Output: 1.47446e-07
-Difference: 0
-Python Output: 4.07831e-07 Calculated Output: 4.07745e-07
-Difference: 0
-Python Output: 1.02352e-07 Calculated Output: 1.02676e-07
-Difference: 0
-Python Output: 0.102926 Calculated Output: 0.102927
-Difference: 0
-Python Output: 0.000622594 Calculated Output: 0.000622594
-Difference: 0
-Python Output: 3.09817e-05 Calculated Output: 3.09817e-05
-Difference: 0
-Python Output: 0.0290477 Calculated Output: 0.0290477
-Difference: 0
-Python Output: 3.87051e-08 Calculated Output: 3.68077e-08
-Difference: 0
-Python Output: 2.10832e-06 Calculated Output: 2.10834e-06
-Difference: 0
-Python Output: 7.74244e-06 Calculated Output: 7.74244e-06
-Difference: 0
-Python Output: 0.0175477 Calculated Output: 0.0175477
-Difference: 0
-Python Output: 2.58108e-06 Calculated Output: 2.58109e-06
-Difference: 0
-Python Output: 0.00262764 Calculated Output: 0.00262764
-Difference: 0
-Python Output: 6.06621e-06 Calculated Output: 6.06623e-06
-Difference: 0
-Python Output: 0.00114646 Calculated Output: 0.00114647
-Difference: 0
-Python Output: 4.81422e-08 Calculated Output: 4.64029e-08
-Difference: 0
-Python Output: 3.43362e-05 Calculated Output: 3.43362e-05
-Difference: 0
-Python Output: 0.00838562 Calculated Output: 0.00838563
-Difference: 0
-Python Output: 1.18244e-05 Calculated Output: 1.18244e-05
-Difference: 0
-Python Output: 6.63725e-07 Calculated Output: 6.63841e-07
-Difference: 0
-Python Output: 0.000402833 Calculated Output: 0.000402833
-Difference: 0
-Python Output: 1.71576e-06 Calculated Output: 1.71579e-06
-Difference: 0
-Python Output: 0.0191302 Calculated Output: 0.0191302
-Difference: 0
-Python Output: 1.12037e-05 Calculated Output: 1.12037e-05
-Difference: 0
-Python Output: 0.00494307 Calculated Output: 0.00494307
-Difference: 0
-Python Output: 0.000524378 Calculated Output: 0.000524378
-Difference: 0
-Python Output: 0.000307973 Calculated Output: 0.000307973
-Difference: 0
-Python Output: 0.0104216 Calculated Output: 0.0104216
-Difference: 0
-Python Output: 3.88616e-08 Calculated Output: 4.0557e-08
-Difference: 0
-Python Output: 2.80993e-05 Calculated Output: 2.80993e-05
-Difference: 0
-Python Output: 3.36478e-05 Calculated Output: 3.36478e-05
-Difference: 0
-Python Output: 0.00014304 Calculated Output: 0.00014304
-Difference: 0
-Python Output: 0.0107842 Calculated Output: 0.0107842
-Difference: 0
-Python Output: 1.55548e-07 Calculated Output: 1.55454e-07
-Difference: 0
-Python Output: 3.34052e-08 Calculated Output: 3.51383e-08
-Difference: 0
-Python Output: 5.2569e-05 Calculated Output: 5.2569e-05
-Difference: 0
-Python Output: 0.0356429 Calculated Output: 0.0356429
-Difference: 0
-Python Output: 0.000650172 Calculated Output: 0.000650172
-Difference: 0
-Python Output: 0.0840221 Calculated Output: 0.0840222
-Difference: 0
-Python Output: 0.02926 Calculated Output: 0.02926
-Difference: 0
-Python Output: 5.20443e-08 Calculated Output: 5.26302e-08
-Difference: 0
-Python Output: 1.67836e-06 Calculated Output: 1.67833e-06
-Difference: 0
-Python Output: 0.00428679 Calculated Output: 0.00428679
-Difference: 0
-Python Output: 0.000198409 Calculated Output: 0.000198409
-Difference: 0
-Python Output: 2.10401e-05 Calculated Output: 2.10401e-05
-Difference: 0
-Python Output: 8.34626e-05 Calculated Output: 8.34626e-05
-Difference: 0
-Python Output: 0.00165126 Calculated Output: 0.00165126
-Difference: 0
-Python Output: 0.00515596 Calculated Output: 0.00515596
-Difference: 0
-Python Output: 0.000184736 Calculated Output: 0.000184736
-Difference: 0
-Python Output: 0.00527044 Calculated Output: 0.00527044
-Difference: 0
-Python Output: 0.000351332 Calculated Output: 0.000351332
-Difference: 0
-Python Output: 0.00978642 Calculated Output: 0.00978643
-Difference: 0
-Python Output: 0.0128214 Calculated Output: 0.0128214
-Difference: 0
-Python Output: 0.000457497 Calculated Output: 0.000457497
-Difference: 0
-Python Output: 0.0100284 Calculated Output: 0.0100284
-Difference: 0
-Python Output: 1.54224e-06 Calculated Output: 1.54224e-06
-Difference: 0
-Python Output: 2.69745e-05 Calculated Output: 2.69745e-05
-Difference: 0
-Python Output: 2.33387e-05 Calculated Output: 2.33387e-05
-Difference: 0
-Python Output: 1.35683e-06 Calculated Output: 1.35682e-06
-Difference: 0
-Python Output: 0.00248447 Calculated Output: 0.00248447
-Difference: 0
-Python Output: 1.98491e-05 Calculated Output: 1.98491e-05
-Difference: 0
-Python Output: 3.31535e-08 Calculated Output: 3.41201e-08
-Difference: 0
-Python Output: 0.00126119 Calculated Output: 0.00126119
-Difference: 0
-Python Output: 6.26862e-06 Calculated Output: 6.26863e-06
-Difference: 0
-Python Output: 0.0533953 Calculated Output: 0.0533953
-Difference: 0
-Python Output: 0.000264127 Calculated Output: 0.000264128
-Difference: 0
-Python Output: 1.57399e-06 Calculated Output: 1.57396e-06
-Difference: 0
-Python Output: 0.00588944 Calculated Output: 0.00588944
-Difference: 0
-Python Output: 1.40381e-07 Calculated Output: 1.40471e-07
-Difference: 0
-Python Output: 9.68641e-06 Calculated Output: 9.68641e-06
-Difference: 0
-Python Output: 2.15258e-05 Calculated Output: 2.15258e-05
-Difference: 0
-Python Output: 0.00024449 Calculated Output: 0.00024449
-Difference: 0
-Python Output: 0.000893956 Calculated Output: 0.000893956
-Difference: 0
-Python Output: 0.00251927 Calculated Output: 0.00251927
-Difference: 0
-Python Output: 0.00883987 Calculated Output: 0.00883988
-Difference: 0
-Python Output: 3.27615e-08 Calculated Output: 3.27566e-08
-Difference: 0
-Python Output: 2.99542e-06 Calculated Output: 2.99541e-06
-Difference: 0
-Python Output: 0.00424078 Calculated Output: 0.00424078
-Difference: 0
-Python Output: 0.00060072 Calculated Output: 0.00060072
-Difference: 0
-Python Output: 0.00227918 Calculated Output: 0.00227918
-Difference: 0
-Python Output: 3.43945e-08 Calculated Output: 3.58042e-08
-Difference: 0
-Python Output: 0.017056 Calculated Output: 0.017056
-Difference: 0
-Python Output: 3.74276e-08 Calculated Output: 3.62141e-08
-Difference: 0
-Python Output: 0.000397712 Calculated Output: 0.000397712
-Difference: 0
-Python Output: 1.99136e-05 Calculated Output: 1.99136e-05
-Difference: 0
-Python Output: 0.0615559 Calculated Output: 0.0615559
-Difference: 0
-Python Output: 1.22772e-07 Calculated Output: 1.22326e-07
-Difference: 0
-Python Output: 9.15735e-08 Calculated Output: 9.19561e-08
-Difference: 0
-Python Output: 0.0493188 Calculated Output: 0.0493188
-Difference: 0
-Python Output: 0.0136984 Calculated Output: 0.0136984
-Difference: 0
-Python Output: 0.000156314 Calculated Output: 0.000156314
-Difference: 0
-Python Output: 0.0545307 Calculated Output: 0.0545307
-Difference: 0
-Python Output: 0.00363738 Calculated Output: 0.00363738
-Difference: 0
-Python Output: 0.0041708 Calculated Output: 0.0041708
-Difference: 0
-Python Output: 5.86528e-05 Calculated Output: 5.86528e-05
+Python Output: 0.00273809 Calculated Output: 3.25522
+Difference: 3
+Python Output: 0.047355 Calculated Output: 56.2988
+Difference: 56
+Python Output: 5.48203e-07 Calculated Output: 0.000651683
 Difference: 0

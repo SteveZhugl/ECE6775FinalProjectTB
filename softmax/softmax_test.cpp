@@ -9,7 +9,7 @@
 
 void read_vector
 (
-    dtype_in input_vector[layer_size]
+    float input_vector[layer_size]
 ) 
 {
     std::ifstream infile_a("data/vector_dat.dat");
@@ -19,7 +19,7 @@ void read_vector
         for (int a = 0; a < layer_size; a++) 
         {
 
-            dtype_in i;
+            float i;
             infile_a >> i;
             input_vector[a] = i;
             outfile_a << input_vector[a] << ", ";
@@ -29,7 +29,7 @@ void read_vector
     }
 }
 
-void verify_output(dtype_out output[layer_size])
+void verify_output(float output[layer_size])
 {
     float difference = 0;
     std::ifstream infile_b("data/output_dat.dat");
@@ -42,9 +42,9 @@ void verify_output(dtype_out output[layer_size])
         {
             float i;
             infile_b >> i;
-            // std::cout << "Python Output: " << i << " Calculated Output: " << output[a] << std::endl;
+            std::cout << "Python Output: " << i << " Calculated Output: " << output[a] << std::endl;
             difference = abs(output[a] - i);
-            // std::cout << "Difference: " << difference << std::endl;
+            std::cout << "Difference: " << difference << std::endl;
             accerr += abs(difference);
             avgerr += abs(difference / i);
             outfile_c << i << " " << output[a] << " " << difference << std::endl;
@@ -61,8 +61,8 @@ void verify_output(dtype_out output[layer_size])
 
 int main() 
 {
-    dtype_in input_vector[layer_size];
-    dtype_out output[layer_size];
+    float input_vector[layer_size];
+    float output[layer_size];
 
     read_vector(input_vector);
     softmax<layer_size>(input_vector, output);

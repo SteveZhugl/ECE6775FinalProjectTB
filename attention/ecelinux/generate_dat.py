@@ -79,7 +79,7 @@ def generate_data():
         probabilities = exponential_logits / np.sum(exponential_logits)
         output_matrix[i, :] = probabilities
         for j in range(0, len(probabilities)):
-            f3.write(str(probabilities[j] * 100) + "\n")
+            f3.write(str(probabilities[j]) + "\n")
             
     for i, row in enumerate(gemm_output_quantized):
         vector_values = np.array(row)
@@ -87,7 +87,7 @@ def generate_data():
         probabilities = exponential_logits / np.sum(exponential_logits)
         output_matrix[i, :] = probabilities
         for j in range(0, len(probabilities)):
-            f3_quantized.write(str(probabilities[j] * 100) + "\n")
+            f3_quantized.write(str(probabilities[j]) + "\n")
 
     # print("Input matrix 1: " + str(matrix_1))
     # print("Input matrix 2: " + str(matrix_2))

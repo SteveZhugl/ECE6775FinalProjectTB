@@ -3,15 +3,13 @@
 //===========================================================================
 // @brief: This header defines the shorthand of several ap_uint data types.
 
-#include "typedefs.h"
-
 #ifndef SOFTMAX
 #define SOFTMAX
 
 const float euler_number = 2.7182818284590;
 
 template <int layer_size>
-void softmax(dtype_in output_layer[layer_size], dtype_out probability_distribution[layer_size]) {
+void softmax(float output_layer[layer_size], float probability_distribution[layer_size]) {
     float euler_layer_sum = 0;
     float euler_sums[layer_size];
 
@@ -32,7 +30,7 @@ void softmax(dtype_in output_layer[layer_size], dtype_out probability_distributi
     }
 
     for (int j = 0; j < layer_size; ++j) {
-        probability_distribution[j] = euler_sums[j] / euler_layer_sum;
+        probability_distribution[j] = euler_sums[j] / euler_layer_sum * 100;
     }
 }
 

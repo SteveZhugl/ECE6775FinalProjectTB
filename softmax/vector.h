@@ -6,6 +6,6 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-const int layer_size = 128; 
+const int layer_size = 16; 
 
 #endif
