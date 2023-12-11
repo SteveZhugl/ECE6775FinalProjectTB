@@ -20,7 +20,7 @@ void attention_mechanism
 )
 {
     bit32_t matrix_gemm_output[MATRIX_DIM_X][MATRIX_DIM_Z];
-    float euler_number = 2.7182818284590;
+    float euler_number = 2.7182818284590452353602874713526624977572;
 
     for(int i = 0; i < MATRIX_DIM_X; ++i)
     {
@@ -42,6 +42,17 @@ void attention_mechanism
         }
     }
 
+    // Scale the values down
+    for(int i = 0; i < MATRIX_DIM_X; ++i)
+    {
+        for(int k = 0; k < MATRIX_DIM_Z; ++k)
+        {
+            matrix_gemm_output[i][k] /= 2;
+            // std::cout<<matrix_gemm_output[i][k] << std::endl;
+        }
+    }
+
+
     // Matrix_dim_x is the layer size for softmax
     for(int i = 0; i < MATRIX_DIM_X; ++i)
     {
@@ -50,7 +61,7 @@ void attention_mechanism
 
         for (int k = 0; k < MATRIX_DIM_Z; ++k) {
             euler_sums[k] = 1.0;
-            for (int a = 1; a <= 1000; ++a) {
+            for (int a = 1; a <= 10000; ++a) {
                 double term = 1.0;
                 for (int b = 1; b <= a; ++b) {
                     term *= matrix_gemm_output[i][k] / b;
@@ -62,7 +73,7 @@ void attention_mechanism
         }
         for (int l = 0; l < MATRIX_DIM_Z; ++l) {
             matrix_output[i][l] = (euler_sums[l] / euler_layer_sum) * 100;
-            std::cout << matrix_output[i][l]  << std::endl;
+            // std::cout << matrix_output[i][l]  << std::endl;
         }
     }
 }

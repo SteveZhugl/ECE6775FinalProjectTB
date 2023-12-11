@@ -64,8 +64,11 @@ def generate_data():
         f2.write(str(random_data_jk[b]) + "\n")
         f2_quantized.write(str(formatted_matrix_2_quantized) + "\n")
 
-    gemm_output           = np.dot(matrix_1, matrix_2)
-    gemm_output_quantized = np.dot(matrix_1_quantized, matrix_2_quantized)
+    gemm_output           = np.dot(matrix_1, matrix_2) / 2
+    gemm_output_quantized = np.dot(matrix_1_quantized, matrix_2_quantized) / 2
+
+    gemm_output = np.where(gemm_output >= 0, np.floor(gemm_output), np.ceil(gemm_output))
+    gemm_output_quantized = np.where(gemm_output_quantized >= 0, np.floor(gemm_output_quantized), np.ceil(gemm_output_quantized))
 
     for x in range(0, i):
         for z in range(0, j):
