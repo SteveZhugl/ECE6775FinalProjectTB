@@ -5,6 +5,7 @@
 
 #include "typedefs.h"
 #include <hls_stream.h>
+#include "hls_math.h"
 
 #ifndef ATTENTION
 #define ATTENTION
@@ -60,15 +61,17 @@ void attention_mechanism
         float euler_sums[MATRIX_DIM_Z];
 
         for (int k = 0; k < MATRIX_DIM_Z; ++k) {
-            euler_sums[k] = 1.0;
-            for (int a = 1; a <= 10000; ++a) {
-                double term = 1.0;
-                for (int b = 1; b <= a; ++b) {
-                    term *= matrix_gemm_output[i][k] / b;
-                }
-                euler_sums[k] += term;
-            }
-            euler_sums[k] = euler_number * euler_sums[k];
+            // euler_sums[k] = 1.0;
+            // for (int a = 1; a <= 10000; ++a) {
+            //     double term = 1.0;
+            //     for (int b = 1; b <= a; ++b) {
+            //         term *= matrix_gemm_output[i][k] / b;
+            //     }
+            //     euler_sums[k] += term;
+            // }
+            // euler_sums[k] = euler_number * euler_sums[k];
+            // float param = (float) matrix_gemm_output[i][k];
+            euler_sums[k] = exp((float)matrix_gemm_output[i][k]);
             euler_layer_sum += euler_sums[k];
         }
         for (int l = 0; l < MATRIX_DIM_Z; ++l) {
