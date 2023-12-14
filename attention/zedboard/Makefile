@@ -3,51 +3,40 @@
 #==========================================================================
 # @brief: A makefile the compiles and runs the attention program
 #
-# @desc: 1. Enter "make all" to make attention-sw and attention-hw
-#        2. Enter "make attention-sw" to compile & execute the attention program
-#        3. Enter "make attention-hw" to synthesize attention using run.tcl
-#        4. Enter "make clean" to clean up the directory (before submission)
+# @desc: 1. "make" or "make sw" runs software execution by default
+#        2. "make fpga" invokes the HW accelerator
+#        3. "make clean" cleans up the directory
 
-# Extract Vivado HLS include path
-XILINX_VIVADO?=/opt/xilinx/Xilinx_Vivado_vitis_2019.2/Vivado/2019.2
-XIL_HLS=source $(XILINX_VIVADO)/settings64.sh; vivado_hls
-VHLS_INC=$(XILINX_VIVADO)/include
-# Specify compilation flags
-CFLAGS=-g -I${VHLS_INC} -DHLS_NO_XIL_FPO_LIB -std=c++11 
 
-# SW_RESULTS=$(result/attention_sw_result.txt)
+INC_PATH=/usr/include/vivado_hls
+CFLAGS = -I${INC_PATH} -DHLS_NO_XIL_FPO_LIB
 
-.PHONY: all clean attention-sw attention-hw
+.PHONY: all sw fpga
 
-# Compile & run attention implementation
-all: attention-sw attention-hw
+all: sw
 
-attention_tb: attention.cpp attention_test.cpp
-#attention_tb: attention_test.cpp
-	g++ ${CFLAGS} -DK_CONST=$* $^ -o $@
+attention-arm: attention.cpp attention_test.cpp
+	@echo "Compiling & executing attention software program on ARM ..."
+	g++ ${CFLAGS} $^ -o $@
 
-result/attention_sw_result.txt: attention_tb
+result/attention_arm_sim.txt: attention-arm
 	mkdir -p result
 	./$< | tee $@
 
-# attention-sw: $(SW_RESULTS)
-attention-sw: csim
+sw: result/attention_arm_sim.txt
+	@echo "Result saved to $@"
 
+attention-fpga: host.cpp
+	@echo "Compiling host program"
+	g++ ${CFLAGS} $^ -o $@
+	@echo "Make sure bitstream is loaded!"
 
-result/attention_csim.txt: attention_tb
-	@echo "Running attention sim..."
-	mkdir -p result
-	./$< | tee $@
-
-csim: result/attention_csim.txt
-	@echo "Result recorded to $<"
-
-result/attention_result.csv: run.tcl attention.cpp attention_test.cpp
-	$(XIL_HLS) -f $<
-
-attention-hw: result/attention_result.csv
+fpga: attention-fpga
+	@echo "Running attention accelerator ..."
+	./$<
 
 # Clean up the directory before submission
 clean:
 	@echo "Clean up output files"
-	rm -rf attention_*_tb vivado_hls.log attention_proj.prj result out.dat *~ xillydemo.bit attention_tb
+	rm -rf attention-arm vivado_hls.log *.prj result out.dat *~
+	rm -rf attention-fpga

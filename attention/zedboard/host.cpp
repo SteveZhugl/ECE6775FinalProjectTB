@@ -10,7 +10,7 @@
 
 #include "timer.h"
 #include "typedefs.h"
-#include "gemm.h"
+#include "attention.h"
 #include "attention_layer.h"
 
 //------------------------------------------------------------------------
