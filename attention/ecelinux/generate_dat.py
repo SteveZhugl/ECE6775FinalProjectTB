@@ -1,6 +1,8 @@
 import random
 import numpy as np
 import math
+import matplotlib.pyplot as plt
+import scipy.stats as stats
 
 def custom_round(number):
     if number >= 0:
@@ -9,12 +11,12 @@ def custom_round(number):
         return int(math.ceil(number))
 
 def generate_data():
-    # i = 64
-    # j = 64
-    # k = 64 
-    i = 4
-    j = 4
-    k = 4
+    i = 64
+    j = 64
+    k = 64 
+    # i = 4
+    # j = 4
+    # k = 4
     f1 = open("data/input_matrix1.dat", "w")
     f2 = open("data/input_matrix2.dat", "w")
     f1_quantized = open("data/quantized_input_matrix1.dat", "w")
@@ -40,16 +42,33 @@ def generate_data():
     random_data_jk = np.random.normal(mean, std_dev, jk_points)
 
     #! REMOVE LATER Plot a histogram to visualize the distribution
-    # plt.hist(random_data_ij, bins=30, density=True, alpha=0.6, color='g')
+    # Create a figure and axis
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    # # Plot the probability density function (PDF)   
-    # xmin, xmax = plt.xlim()
-    # x = np.linspace(xmin, xmax, 100)
-    # p = np.exp(-0.5 * ((x - mean) / std_dev) ** 2) / (std_dev * np.sqrt(2 * np.pi))
-    # plt.plot(x, p, 'k', linewidth=2)
+    # Histogram
+    ax.hist(random_data_ij, bins=30, density=True, alpha=0.6, color='skyblue', edgecolor='black', label='Histogram')
 
-    # plt.title("Generated Data with Normal Distribution")
-    # plt.savefig("output.png")
+    # Probability Density Function (PDF)
+    xmin, xmax = plt.xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = stats.norm.pdf(x, mean, std_dev)
+    ax.plot(x, p, 'k', linewidth=2, label='Distribution')
+
+    # Points on the x-axis
+    x_points = [-4, -2, -1, -0.5, -0.25, -0.125, -0.0625, 0, 0.0625, 0.125, 0.25, 0.5, 1, 2, 4]
+    y_points = np.zeros(len(x_points))
+    ax.scatter(x_points, y_points, color='red', label='NF4 Datatype Points', zorder=5)
+
+    # Set labels and title
+    ax.set_xlabel('Value')
+    ax.set_ylabel('Probability Density')
+    ax.set_title("Generated Data with Normal Distribution and NF4 Datatype")
+
+    # Add a legend
+    ax.legend()
+
+    # Save the figure
+    plt.savefig("output.png")
 
     for a in range(0, i * j):
         matrix_1[int(a / j)][a % j] = random_data_ij[a]
