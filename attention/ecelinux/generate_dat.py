@@ -55,7 +55,7 @@ def generate_data():
     ax.plot(x, p, 'k', linewidth=2, label='Distribution')
 
     # Points on the x-axis
-    x_points = [-4, -2, -1, -0.5, -0.25, -0.125, -0.0625, 0, 0.0625, 0.125, 0.25, 0.5, 1, 2, 4]
+    x_points = [-4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
     y_points = np.zeros(len(x_points))
     ax.scatter(x_points, y_points, color='red', label='NF4 Datatype Points', zorder=5)
 
