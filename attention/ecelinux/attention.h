@@ -5,7 +5,7 @@
 
 #include "typedefs.h"
 #include <hls_stream.h>
-#include "hls_math.h"
+// #include "hls_math.h"
 
 #ifndef ATTENTION
 #define ATTENTION
@@ -61,17 +61,29 @@ void attention_mechanism
         float euler_sums[MATRIX_DIM_Z];
 
         for (int k = 0; k < MATRIX_DIM_Z; ++k) {
-            // euler_sums[k] = 1.0;
-            // for (int a = 1; a <= 10000; ++a) {
-            //     double term = 1.0;
-            //     for (int b = 1; b <= a; ++b) {
-            //         term *= matrix_gemm_output[i][k] / b;
-            //     }
-            //     euler_sums[k] += term;
-            // }
-            // euler_sums[k] = euler_number * euler_sums[k];
-            // float param = (float) matrix_gemm_output[i][k];
-            euler_sums[k] = exp((float)matrix_gemm_output[i][k]);
+
+            //Way 1:Implement softmax with Taylor Series.
+            euler_sums[k] = 1.0;
+            for (int a = 1; a <= 10000; ++a) {
+                double term = 1.0;
+                for (int b = 1; b <= a; ++b) {
+                    term *= matrix_gemm_output[i][k] / b;
+                }
+                euler_sums[k] += term;
+            }
+            euler_sums[k] = euler_number * euler_sums[k];
+
+
+            // Way 2:Implement softmax with exp() of hls_math.h. It could funtion well
+            // with vivado_hls synthesis and goes well with bitstream generation.
+            // However, g++ terminates its compilation on Zedboard when running
+            // make fpga with the error:"g++: internal compiler error: Killed (program cc1plus)".
+            // It turns out that the error was caused by out of memory because the FPGA cannot perform
+            // exp() on board with 256KB memory.
+            // euler_sums[k] = exp((float)matrix_gemm_output[i][k]);
+
+
+
             euler_layer_sum += euler_sums[k];
         }
         for (int l = 0; l < MATRIX_DIM_Z; ++l) {
